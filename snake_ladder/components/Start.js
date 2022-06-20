@@ -1,22 +1,22 @@
 
-import { StyleSheet, Text, View, Button, Alert } from 'react-native'
+import { StyleSheet, View, Button, Alert } from 'react-native'
 import React from 'react'
 
-const Start = () => {
+const Start = ({navigation}) => {
   return (
     <View>
-      <View style={styles.container}>        
+      <View style={{padding:30,marginTop:100}}>        
         <Button
-            title="Send Joining Code ... "
+            title="Send Joining Code ... "            
             color="#f194ff"
-            onPress={() => Alert.alert('Send Joining Code...:-)')}
-        />
-
-
+            onPress={() => navigation.navigate('Join1')}
+            />
+        </View>
+        <View style={{padding:30}}>        
         <Button
             title="Receive Code... "
             color="#f194ff"
-            onPress={() => Alert.alert('Receive Code...')}
+            onPress={() => Alert.alert('Receive Code...:-(')}
         />
         </View>
 
@@ -26,10 +26,5 @@ const Start = () => {
 
 export default Start
 
-const styles = StyleSheet.create({ 
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        marginHorizontal: 16,
-      },
+const styles = StyleSheet.create({     
 })

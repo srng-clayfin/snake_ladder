@@ -1,12 +1,17 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import Start from './components/Start'
+import { NavigationContainer } from '@react-navigation/native'
+import MyStack from './components/MyStack'
+
+
 
 const App = () => {
   return (
-    <View>
-      <Start />
-    </View>
+    <NavigationContainer>
+      <MyStack />
+    </NavigationContainer>
+      
+
   )
 }
 
