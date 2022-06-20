@@ -1,10 +1,11 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Start from './components/Start'
 
 const App = () => {
   return (
     <View>
-      <Text>Srng 0702 mlg mh ind earth universe galaxy</Text>
+      <Start />
     </View>
   )
 }
