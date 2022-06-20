@@ -1,4 +1,3 @@
-
 import { StyleSheet, View, Button, Alert } from 'react-native'
 import React from 'react'
 
