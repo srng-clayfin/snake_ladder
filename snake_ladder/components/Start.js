@@ -16,7 +16,7 @@ const Start = ({navigation}) => {
         <Button
             title="Receive Code... "
             color="#f194ff"
-            onPress={() => Alert.alert('Receive Code...:-(')}
+            onPress={() => navigation.navigate('Receive1')}
         />
         </View>
 
