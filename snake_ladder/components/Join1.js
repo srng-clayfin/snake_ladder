@@ -7,7 +7,7 @@ import { userContext } from './MyStack'
 const Join1 = ({navigation}) => 
 {   
     const {p1,setP1,p2,setP2,pid,setPid,
-        statusp2,setStatusp2,statusp1,setStatusp1} = useContext(userContext) 
+        user1,setUser1} = useContext(userContext) 
 
     const [rno,setRno] = useState(0)  ;
 
@@ -50,7 +50,7 @@ const Join1 = ({navigation}) =>
             color="#f194ff"
             onPress={() => 
                 {
-                    setStatusp1(true)
+                    setUser1(true)
                     navigation.navigate('Game')
                 }}
         />

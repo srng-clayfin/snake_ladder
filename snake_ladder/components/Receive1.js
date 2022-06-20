@@ -7,7 +7,8 @@ import axios from 'axios';
 const Receive1 = ({navigation}) => 
 {    
         const {p1,setP1,p2,setP2,pid,setPid} = useContext(userContext) ;
-        const [jno,setJno] = useState();  
+        const [jno,setJno] = useState();          
+        const [udata,setUdata]  = useState({});
 
         const [flag,setFlag] = useState(false)  ;   
 
@@ -18,23 +19,30 @@ const Receive1 = ({navigation}) =>
                     method: 'get',
                     url: 'http://srngjson.herokuapp.com/products/'+jno,
                 }).then((response) => {
-                    // console.log(response.data.player1);
+                    // console.log(response.data);
                     if(response.data.player1)
                     {
                         setFlag(true);
+                        setUdata(response.data);
                         setPid(jno)
+                        // console.log(udata);
                     }
                     else if(!response.data.player2)
                     {
                         Alert.alert("INvalid Code");
                     }
                 });
+
+                
         }
 
-        const startGame = () =>
+        const startGame = async () =>
         {   
-            
-            
+            await axios.patch(`http://srngjson.herokuapp.com/products/${jno}`,
+            {                
+                "Player2" : 2,                
+            }); 
+
             navigation.navigate('Game')
         }
 

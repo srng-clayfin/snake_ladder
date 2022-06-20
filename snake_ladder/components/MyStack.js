@@ -17,8 +17,7 @@ export default function MyStack()
   const [p1,setP1] = useState(0);
   const [pid,setPid] = useState(0);
   const [p2,setP2] = useState(0);   
-  const [statusp2,setStatusp2] = useState(false); 
-  const [statusp1,setStatusp1] = useState(false); 
+  const [user1,setUser1] = useState(false); 
 
   const delData = (navigation) =>
   {
