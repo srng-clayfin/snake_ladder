@@ -32,7 +32,7 @@ export default function MyStack()
   return (
 
     <userContext.Provider value={{p1,setP1,p2,setP2,pid,setPid,
-      statusp2,setStatusp2,statusp1,setStatusp1}} >
+      user1,setUser1}} >
     
       <Stack.Navigator>        
           <Stack.Screen

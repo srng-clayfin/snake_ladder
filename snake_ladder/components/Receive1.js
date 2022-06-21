@@ -40,7 +40,7 @@ const Receive1 = ({navigation}) =>
         {   
             await axios.patch(`http://srngjson.herokuapp.com/products/${jno}`,
             {                
-                "Player2" : 2,                
+                "player2" : 2,                
             }); 
 
             navigation.navigate('Game')
