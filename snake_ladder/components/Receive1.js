@@ -31,16 +31,14 @@ const Receive1 = ({navigation}) =>
                     {
                         Alert.alert("INvalid Code");
                     }
-                });
-
-                
+                });               
         }
 
         const startGame = async () =>
         {   
             await axios.patch(`http://srngjson.herokuapp.com/products/${jno}`,
             {                
-                "player2" : 2,                
+                "player2" : 1,                
             }); 
 
             navigation.navigate('Game')
