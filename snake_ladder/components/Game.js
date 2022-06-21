@@ -36,7 +36,14 @@ const Game = () =>
     const handleDice = () =>
     {
         const count = Math.floor(Math.random() * (6 - 1 + 1) + 1);
-        setDiceno(count);
+        if(diceno == count)
+        {
+            handleDice()
+        }
+        else
+        {
+            setDiceno(count);
+        }      
     }
 
 
