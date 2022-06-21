@@ -2,6 +2,7 @@ import { StyleSheet, Text, View } from 'react-native'
 import React, { createContext, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import MyStack from './components/MyStack'
+import Game from './components/Game'
 
 const App = () => 
 {
@@ -11,12 +12,16 @@ const App = () =>
   
   return (
     
-      <NavigationContainer>
+      // <NavigationContainer>
   
-            <MyStack />
+      //       <MyStack />
   
-      </NavigationContainer>    
+      // </NavigationContainer>    
       
+      
+      <View>        
+        <Game />
+      </View>
       
 
   )
