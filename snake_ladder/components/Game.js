@@ -1,4 +1,4 @@
-import { ImageBackground, TouchableOpacity, StyleSheet, Text, View } from 'react-native'
+import { ImageBackground, TouchableOpacity, StyleSheet, Text, View, Alert } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { userContext } from './MyStack'
@@ -9,28 +9,28 @@ const dicelist = [require("./assets/1.png"), require("./assets/2.png"), require(
 
 const Game = () => 
 {     
-    // const {p1,setP1,p2,setP2,pid,setPid,
-    //     user1,setUser1} = useContext(userContext) ;
+    const {p1,setP1,p2,setP2,pid,
+        user1,setUser1} = useContext(userContext) ;
     
     const [flag,setFlag] = useState(false);
     const [diceno, setDiceno] = useState(5);
 
-    //     var refreshId = setInterval(function() 
-    //     {
-    //         axios({
-    //             method: 'get',
-    //             url: `https://srngjson.herokuapp.com/products/${pid}`,
-    //         }).then((response) => {       
-    //             const pdata = response.data;                               
-    //             setP1(pdata.player1);
-    //             setP2(pdata.player2);                
-    //         });
-    //         if(p1>0 && p2>0)
-    //         {
-    //             setFlag(true)
-    //             clearInterval(refreshId);
-    //         }
-    //     }, 3000);
+        var refreshId = setInterval(function() 
+        {
+            axios({
+                method: 'get',
+                url: `https://srngjson.herokuapp.com/products/${pid}`,
+            }).then((response) => {       
+                const pdata = response.data;                               
+                setP1(pdata.player1);
+                setP2(pdata.player2);                
+            });
+            if(p1>0 && p2>0)
+            {
+                setFlag(true)                
+                return () => clearInterval(refreshId);
+            }
+        }, 3000);
 
 
     const handleDice = () =>
@@ -44,6 +44,23 @@ const Game = () =>
         {
             setDiceno(count);
         }      
+
+        if(user1)
+        {
+            
+            const updateVotes = async () => {
+            const { data } = await axios.patch(`http://srngjson.herokuapp.com/products/${pid}`,
+            {
+                "player1": p1+diceno,
+                "player2": p2,
+                "id": pid
+            });
+            return data;
+            }
+
+            updateVotes();
+        }
+
     }
 
 

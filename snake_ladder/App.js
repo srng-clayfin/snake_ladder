@@ -12,16 +12,16 @@ const App = () =>
   
   return (
     
-      // <NavigationContainer>
+      <NavigationContainer>
   
-      //       <MyStack />
+            <MyStack />
   
-      // </NavigationContainer>    
+      </NavigationContainer>    
       
       
-      <View>        
-        <Game />
-      </View>
+      // <View>        
+      //   <Game />
+      // </View>
       
 
   )
