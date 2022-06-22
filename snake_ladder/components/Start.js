@@ -6,14 +6,14 @@ const Start = ({navigation}) => {
     <View>
       <View style={{padding:30,marginTop:100}}>        
         <Button
-            title="Send Joining Code ... "            
+            title="Create Joining Code ... "            
             color="#f194ff"
             onPress={() => navigation.navigate('Join1')}
             />
         </View>
         <View style={{padding:30}}>        
         <Button
-            title="Receive Code... "
+            title="Enter Joining Code... "
             color="#f194ff"
             onPress={() => navigation.navigate('Receive1')}
         />

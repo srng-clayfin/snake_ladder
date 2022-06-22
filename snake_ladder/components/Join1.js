@@ -46,7 +46,7 @@ const Join1 = ({navigation}) =>
             <Text style={{fontWeight:"bold",fontSize:24}}>{rno}</Text>
         </View>
         <Button
-            title="Code Sended & Start Game"
+            title="Send This Code & Start Game"
             color="#f194ff"
             onPress={() => 
                 {

@@ -10,31 +10,47 @@ const dicelist = [require("./assets/1.png"), require("./assets/2.png"), require(
 const Game = () => 
 {     
     const {p1,setP1,p2,setP2,pid,
-        user1,setUser1} = useContext(userContext) ;
+        user1,setUser1} = useContext(userContext);
     
     const [flag,setFlag] = useState(false);
     const [cnt,setCnt] = useState(false);
     const [diceno, setDiceno] = useState(0);
+    
+    useEffect(() =>
+    {
+        // console.log("srng 0702")
+        axios({
+            method: 'get',
+            url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
+        }).then((response) => {       
+            const pdata = response.data;                               
+            setP1(pdata.player1);
+            setP2(pdata.player2);                               
+        });        
+    })
 
-        var refreshId = setInterval( () =>
-        {
-            // console.log("srng 0702");
+    if(p1>0 && p2>0)
+    {
+        setFlag(true)                
+    }
 
-            axios({
-                method: 'get',
-                url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
-            }).then((response) => {       
-                const pdata = response.data;                               
-                setP1(pdata.player1);
-                setP2(pdata.player2);                               
-            });
-            if(p1>0 && p2>0)
-            {
-                setFlag(true)                
-                return () => clearInterval(refreshId);
-            }
-        }, 2000);
-
+        // var refreshuser = setInterval( () =>
+        // {
+        //     axios({
+        //         method: 'get',
+        //         url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
+        //     }).then((response) => {       
+        //         const pdata = response.data;                               
+        //         setP1(pdata.player1);
+        //         setP2(pdata.player2);                               
+        //     });
+        //     if(p1>0 && p2>0)
+        //     {
+        //         setFlag(true)                
+        //         return () => clearInterval(refreshuser);
+        //     }
+        // }, 2000);
+ 
     const handleDice = () =>
     {
         const count = Math.floor(Math.random() * (6 - 1 + 1) + 1);
@@ -46,17 +62,17 @@ const Game = () =>
         {
             setDiceno(count);
         }         
-        handleuser()
+        handleuser(diceno)
     }
     
-    const handleuser = () =>
+    const handleuser = (dno) =>
     {
         if(user1)
         {            
             const updatePlayer = async () => {
                 const { data } = await axios.patch(`https://fakeserversarang.herokuapp.com/player/${pid}`,
                 {
-                    "player1": p1+diceno,
+                    "player1": p1+dno,
                     "player2": p2,
                     "id": pid
                 });            
@@ -69,21 +85,15 @@ const Game = () =>
                 const { data } = await axios.patch(`https://fakeserversarang.herokuapp.com/player/${pid}`,
                 {
                     "player1": p1,
-                    "player2": p2+diceno,
+                    "player2": p2+dno,
                     "id": pid
                 });
 
             }
             updatePlayer();
         }
+        setCnt(!cnt)
     }
-
-    useEffect(() =>
-    { 
-        handleuser();
-    },[])
-
-
 
 return (
     <View style={{marginTop:20}}>
@@ -95,7 +105,7 @@ return (
             </View>  
             :
             <View>
-                <Text>Waiting for player...</Text>
+                <Text style={{fontSize:25,fontWeight:"bold",marginTop:20}}>Waiting for player...</Text>
             </View>
         }        
 
@@ -124,9 +134,9 @@ return (
                             width: "100%",
                             borderRadius: 6,
                         }}
-                    />           
-                </TouchableOpacity>
-            </View>
+                />           
+            </TouchableOpacity>
+        </View>
 
 
     </View>
