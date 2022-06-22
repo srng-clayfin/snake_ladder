@@ -17,9 +17,13 @@ const Receive1 = ({navigation}) =>
         { 
                 axios({
                     method: 'get',
-                    url: 'http://srngjson.herokuapp.com/products/'+jno,
+                    url: 'https://fakeserversarang.herokuapp.com/player/'+jno,
                 }).then((response) => {
                     // console.log(response.data);
+                    // setFlag(true);
+                    //     setUdata(response.data);
+                    //     setPid(jno)
+
                     if(response.data.player1)
                     {
                         setFlag(true);
@@ -27,16 +31,16 @@ const Receive1 = ({navigation}) =>
                         setPid(jno)
                         // console.log(udata);
                     }
-                    else if(!response.data.player2)
-                    {
-                        Alert.alert("Invalid Code");
-                    }
+                    // else if(!response.data.player2)
+                    // {
+                    //     Alert.alert("Invalid Code");
+                    // }
                 });               
         }
 
         const startGame = async () =>
         {   
-            await axios.patch(`http://srngjson.herokuapp.com/products/${jno}`,
+            await axios.patch(`https://fakeserversarang.herokuapp.com/player/${jno}`,
             {                
                 "player2" : 1,                
             }); 

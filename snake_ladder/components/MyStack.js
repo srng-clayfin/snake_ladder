@@ -14,14 +14,14 @@ export const userContext = React.createContext();
 export default function MyStack()
 {
 
-  const [p1,setP1] = useState(0);
-  const [pid,setPid] = useState(0);
-  const [p2,setP2] = useState(0);   
+  const [p1,setP1] = useState();
+  const [pid,setPid] = useState();
+  const [p2,setP2] = useState();   
   const [user1,setUser1] = useState(false); 
 
   const delData = (navigation) =>
   {
-    axios.delete('https://srngjson.herokuapp.com/products/'+pid)
+    axios.delete('https://fakeserversarang.herokuapp.com/player/'+pid)
     .then(response => console.log(response.data));
 
     navigation.navigate('Start');

@@ -13,25 +13,27 @@ const Game = () =>
         user1,setUser1} = useContext(userContext) ;
     
     const [flag,setFlag] = useState(false);
-    const [diceno, setDiceno] = useState(5);
+    const [cnt,setCnt] = useState(false);
+    const [diceno, setDiceno] = useState(0);
 
-        var refreshId = setInterval(function() 
+        var refreshId = setInterval( () =>
         {
+            // console.log("srng 0702");
+
             axios({
                 method: 'get',
-                url: `https://srngjson.herokuapp.com/products/${pid}`,
+                url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
             }).then((response) => {       
                 const pdata = response.data;                               
                 setP1(pdata.player1);
-                setP2(pdata.player2);                
+                setP2(pdata.player2);                               
             });
             if(p1>0 && p2>0)
             {
                 setFlag(true)                
                 return () => clearInterval(refreshId);
             }
-        }, 3000);
-
+        }, 2000);
 
     const handleDice = () =>
     {
@@ -43,36 +45,44 @@ const Game = () =>
         else
         {
             setDiceno(count);
-        }      
-
+        }         
+        handleuser()
+    }
+    
+    const handleuser = () =>
+    {
         if(user1)
         {            
-            const updateVotes = async () => {
-            const { data } = await axios.patch(`http://srngjson.herokuapp.com/products/${pid}`,
-            {
-                "player1": p1+diceno,
-                "player2": p2,
-                "id": pid
-            });
-            return data;
+            const updatePlayer = async () => {
+                const { data } = await axios.patch(`https://fakeserversarang.herokuapp.com/player/${pid}`,
+                {
+                    "player1": p1+diceno,
+                    "player2": p2,
+                    "id": pid
+                });            
             }
-            updateVotes();
+            updatePlayer();
         }
         else
         {
-            const updateVotes = async () => {
-                const { data } = await axios.patch(`http://srngjson.herokuapp.com/products/${pid}`,
+            const updatePlayer = async () => {
+                const { data } = await axios.patch(`https://fakeserversarang.herokuapp.com/player/${pid}`,
                 {
                     "player1": p1,
                     "player2": p2+diceno,
                     "id": pid
                 });
-                return data;
-                }
-                updateVotes();
-        }
 
+            }
+            updatePlayer();
+        }
     }
+
+    useEffect(() =>
+    { 
+        handleuser();
+    },[])
+
 
 
 return (
@@ -94,8 +104,8 @@ return (
         </View>
 
         {/* <View style={{marginTop:20}}>
-
         </View> */}
+        
         <View style={ styles.diceparent }>  
           <TouchableOpacity
                 style={styles.button}

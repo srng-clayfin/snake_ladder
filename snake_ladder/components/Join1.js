@@ -13,7 +13,7 @@ const Join1 = ({navigation}) =>
 
     const createData = async (no) => {        
         try {
-        const response = await axios.post(`http://srngjson.herokuapp.com/products`, 
+        const response = await axios.post(`https://fakeserversarang.herokuapp.com/player`, 
         {
             "player1":1,  
             "id" : no
