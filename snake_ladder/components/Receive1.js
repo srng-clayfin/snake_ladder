@@ -29,7 +29,7 @@ const Receive1 = ({navigation}) =>
                     }
                     else if(!response.data.player2)
                     {
-                        Alert.alert("INvalid Code");
+                        Alert.alert("Invalid Code");
                     }
                 });               
         }
@@ -44,20 +44,9 @@ const Receive1 = ({navigation}) =>
             navigation.navigate('Game')
         }
 
-
-
-          
-
-    
-
-
-
-    // console.log(jno)
-
   return (
     <View>
-        <View><Text>Receive1</Text></View>
-        <View><Text>{p1}</Text></View>      
+        <View><Text style={{fontSize:20,fontWeight:"bold",marginTop:40}}>Enter Code...</Text></View>          
       
         <TextInput
             style={styles.input}

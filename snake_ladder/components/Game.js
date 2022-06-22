@@ -46,8 +46,7 @@ const Game = () =>
         }      
 
         if(user1)
-        {
-            
+        {            
             const updateVotes = async () => {
             const { data } = await axios.patch(`http://srngjson.herokuapp.com/products/${pid}`,
             {
@@ -57,8 +56,20 @@ const Game = () =>
             });
             return data;
             }
-
             updateVotes();
+        }
+        else
+        {
+            const updateVotes = async () => {
+                const { data } = await axios.patch(`http://srngjson.herokuapp.com/products/${pid}`,
+                {
+                    "player1": p1,
+                    "player2": p2+diceno,
+                    "id": pid
+                });
+                return data;
+                }
+                updateVotes();
         }
 
     }
@@ -79,7 +90,7 @@ return (
         }        
 
         <View style={{marginTop:20}}>
-            <Board />
+            <Board pl1={p1} pl2={p2}/>
         </View>
 
         {/* <View style={{marginTop:20}}>

@@ -6,7 +6,7 @@ const windowWidth = Dimensions.get('window').width;
 //const image = require('../assets/snake1.jpeg');
 const image = require('./assets/snake-imp.jpg');
 
-export const Board = () =>
+export const Board = (p) =>
 {
 
 
@@ -24,7 +24,7 @@ export const Board = () =>
                     {
                         [...Array(100)].map((el, i) =>
                             <View key={i}>
-                                <Block value={100-i} place1={1} place2={1} />
+                                <Block value={100-i} place1={p.pl1} place2={p.pl2} />
                             </View>
                         )
                     }
