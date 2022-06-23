@@ -14,7 +14,7 @@ const Game = () =>
     const {p1,setP1,p2,setP2,pid,user1,setUser1} = useContext(userContext);      
     const [diceno, setDiceno] = useState(0);  
 
-    useEffect(() =>
+    const getData = () =>
     {
         axios({
             method: 'get',
@@ -28,8 +28,14 @@ const Game = () =>
         {
             setFlag(true)                             
         }
-    })
+    }
 
+    useEffect(() =>
+    {
+        getData()
+    },[])
+
+        
         // setInterval( () =>
         // {
         //     axios({
@@ -44,7 +50,11 @@ const Game = () =>
         //     {
         //         setFlag(true)                             
         //     }
-        // }, 1000);        
+        // }, 1000);  
+    
+
+    }
+
  
     const handleDice = () =>
     {
@@ -72,7 +82,8 @@ const Game = () =>
                     "id": pid
                 });            
             }
-            updatePlayer();
+            updatePlayer();        
+            // getData();
         }
         else
         {
@@ -86,6 +97,7 @@ const Game = () =>
 
             }
             updatePlayer();
+            // getData();
         }        
     }
 
