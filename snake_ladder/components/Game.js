@@ -9,47 +9,36 @@ const dicelist = [require("./assets/1.png"), require("./assets/2.png"), require(
 
 const Game = () => 
 {     
-    const {p1,setP1,p2,setP2,pid,
-        user1,setUser1} = useContext(userContext);
+    const {p1,setP1,p2,setP2,pid,user1,setUser1} = useContext(userContext);
     
     const [flag,setFlag] = useState(false);
     const [cnt,setCnt] = useState(false);
-    const [diceno, setDiceno] = useState(0);
+    const [diceno, setDiceno] = useState(0);  
     
-    useEffect(() =>
-    {
-        // console.log("srng 0702")
-        axios({
-            method: 'get',
-            url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
-        }).then((response) => {       
-            const pdata = response.data;                               
-            setP1(pdata.player1);
-            setP2(pdata.player2);                               
-        });        
-    })
+        var refreshuser = setInterval( () =>
+        {
+            axios({
+                method: 'get',
+                url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
+            }).then((response) => {       
+                const pdata = response.data;                               
+                setP1(pdata.player1);
+                setP2(pdata.player2);                               
+            });
+            if(p1>0 && p2>0)
+            {
+                setFlag(true)                
+                return () => clearInterval(refreshuser);
+            }
+        }, 2000);
 
-    if(p1>0 && p2>0)
-    {
-        setFlag(true)                
-    }
+        useEffect( () =>
+        {
+            handleuser();
+        },[diceno])
 
-        // var refreshuser = setInterval( () =>
-        // {
-        //     axios({
-        //         method: 'get',
-        //         url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
-        //     }).then((response) => {       
-        //         const pdata = response.data;                               
-        //         setP1(pdata.player1);
-        //         setP2(pdata.player2);                               
-        //     });
-        //     if(p1>0 && p2>0)
-        //     {
-        //         setFlag(true)                
-        //         return () => clearInterval(refreshuser);
-        //     }
-        // }, 2000);
+
+
  
     const handleDice = () =>
     {
@@ -91,9 +80,9 @@ const Game = () =>
 
             }
             updatePlayer();
-        }
-        setCnt(!cnt)
+        }        
     }
+
 
 return (
     <View style={{marginTop:20}}>
