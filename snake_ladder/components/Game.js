@@ -14,6 +14,16 @@ const Game = () =>
     const [flag,setFlag] = useState(false);
     const [cnt,setCnt] = useState(false);
     const [diceno, setDiceno] = useState(0);  
+
+
+        // axios({
+        //     method: 'get',
+        //     url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
+        // }).then((response) => {       
+        //     const pdata = response.data;                               
+        //     setP1(pdata.player1);
+        //     setP2(pdata.player2);                               
+        // });
     
         var refreshuser = setInterval( () =>
         {
@@ -31,14 +41,6 @@ const Game = () =>
                 return () => clearInterval(refreshuser);
             }
         }, 2000);
-
-        useEffect( () =>
-        {
-            handleuser();
-        },[diceno])
-
-
-
  
     const handleDice = () =>
     {
