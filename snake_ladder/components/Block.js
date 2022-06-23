@@ -17,17 +17,20 @@ export const Block = (p) =>
                 <View style={styles.parent}>                   
                    {         
                     p.value === p.place1 && p.value === p.place2 ?
-                    <Text style={styles.child1}>
+                    // <Text style={styles.child1}>
+                    <Text style={{backgroundColor:'blue'}}>
                         {user1+user2}
                     </Text>
                         :
                     p.value === p.place1 ?                
-                    <Text style={styles.child}>
+                    // <Text style={styles.child}>
+                    <Text style={{backgroundColor:'red'}}>
                         {user1}
                     </Text>
                         :                    
                     p.value === p.place2 ?                
-                    <Text style={styles.child}>
+                    // <Text style={styles.child}>
+                    <Text style={{backgroundColor:'green'}}>
                         {user2}
                     </Text>
                         :                      
@@ -52,6 +55,6 @@ const styles = StyleSheet.create ({
             fontWeight: 'normal',
         },
         child1:{
-            textAlign: 'center',            
+            textAlign: 'center',  
         }    
  })

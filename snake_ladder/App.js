@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import MyStack from './components/MyStack'
 import Game from './components/Game'
 
-const App = () => 
+const App = () =>   
 {
 
   const [p1,setP1] = useState("srng");
@@ -17,6 +17,7 @@ const App = () =>
             <MyStack />
   
       </NavigationContainer>    
+
       
       
       // <View>        
