@@ -23,18 +23,26 @@ const Game = () =>
             const pdata = response.data;                               
             setP1(pdata.player1);
             setP2(pdata.player2);                               
-        });
+        });        
         if(p1>0 && p2>0)
         {
             setFlag(true)                             
         }
     }
 
+    
     useEffect(() =>
     {
         getData()
-    },[])
-
+    })    
+    useEffect(() =>
+    {
+        getData()
+    },[])    
+    useEffect(() =>
+    {
+        getData()
+    },[p1,p2])
         
         // setInterval( () =>
         // {
@@ -51,9 +59,7 @@ const Game = () =>
         //         setFlag(true)                             
         //     }
         // }, 1000);  
-    
-
-    }
+       
 
  
     const handleDice = () =>
@@ -83,7 +89,7 @@ const Game = () =>
                 });            
             }
             updatePlayer();        
-            // getData();
+            getData();
         }
         else
         {
@@ -97,7 +103,7 @@ const Game = () =>
 
             }
             updatePlayer();
-            // getData();
+            getData();
         }        
     }
 
@@ -145,8 +151,6 @@ return (
                 />           
             </TouchableOpacity>
         </View>
-
-
     </View>
   )
 }
