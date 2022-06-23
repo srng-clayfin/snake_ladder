@@ -11,9 +11,7 @@ const Game = () =>
 {     
     const [flag,setFlag] = useState(false);
 
-    const {p1,setP1,p2,setP2,pid,user1,setUser1} = useContext(userContext);    
-    
-    const [cnt,setCnt] = useState(false);
+    const {p1,setP1,p2,setP2,pid,user1,setUser1} = useContext(userContext);      
     const [diceno, setDiceno] = useState(0);  
 
     useEffect(() =>
@@ -46,7 +44,7 @@ const Game = () =>
         //     {
         //         setFlag(true)                             
         //     }
-        // }, 1000);
+        // }, 1000);        
  
     const handleDice = () =>
     {
