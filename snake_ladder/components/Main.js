@@ -5,17 +5,11 @@ import { Button } from 'react-native-elements';
 const Main = ({navigation}) => {
   return (
     <View style={{marginTop:320,width:"44%",marginLeft:"28%"}}>                
-
-                {/* <Button
+                <Button
                 title="Start Game"
                 type="clear"
-                
                 onPress={() => navigation.navigate('Start')}
-                
-                /> */}
-
-                
-
+                />
     </View>
   )
 }
