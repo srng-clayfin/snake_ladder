@@ -3,6 +3,7 @@ import React, { createContext, useState } from 'react'
 import { NavigationContainer } from '@react-navigation/native'
 import MyStack from './components/MyStack'
 import Game from './components/Game'
+import Main from './components/Main'
 
 const App = () =>   
 {
@@ -18,10 +19,9 @@ const App = () =>
   
       </NavigationContainer>    
 
-      
-      
+    
       // <View>        
-      //   <Game />
+      //   <Main />
       // </View>
       
 

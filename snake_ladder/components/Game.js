@@ -1,5 +1,5 @@
 import { ImageBackground, TouchableOpacity, StyleSheet, Text, View, Alert, ActivityIndicator } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import { userContext } from './MyStack'
 import { Board } from './Board'
@@ -12,53 +12,59 @@ const Game = () =>
     const [flag,setFlag] = useState(false);
 
     const {p1,setP1,p2,setP2,pid,user1,setUser1} = useContext(userContext);      
-    const [diceno, setDiceno] = useState(0);  
+    const [diceno, setDiceno] = useState(0);          
 
-    const getData = () =>
-    {
-        axios({
-            method: 'get',
-            url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
-        }).then((response) => {       
-            const pdata = response.data;                               
-            setP1(pdata.player1);
-            setP2(pdata.player2);                               
-        });        
-        if(p1>0 && p2>0)
-        {
-            setFlag(true)                             
-        }
-    }
+    const [plyr1,setPlyr1] = useState(1);
+    const [plyr2,setPlyr2] = useState(1);
 
-    
-    useEffect(() =>
-    {
-        getData()
-    })    
-    useEffect(() =>
-    {
-        getData()
-    },[])    
-    useEffect(() =>
-    {
-        getData()
-    },[p1,p2])
+    // const getData = () =>
+    // {
+    //     axios({
+    //         method: 'get',
+    //         url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
+    //     }).then((response) => {       
+    //         const pdata = response.data;                               
+    //         setP1(pdata.player1);
+    //         setP2(pdata.player2);                               
+            // setPlyr1(pdata.player1);
+            // setPlyr2(pdata.player2);
+    //         // console.log("Player No. : ",p1,p2,"Srng  : ",pdata.player1,pdata.player1)
+    //     });        
+    //     if(p1>0 && p2>0)
+    //     {
+    //         setFlag(true)                             
+    //     }
+    // }    
+    // useEffect(() =>
+    // {
+    //     getData()
+    // })    
+    // useEffect(() =>
+    // {
+    //     getData()
+    // },[])    
+    // useEffect(() =>
+    // {
+    //     getData()
+    // },[p1,p2])
         
-        // setInterval( () =>
-        // {
-        //     axios({
-        //         method: 'get',
-        //         url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
-        //     }).then((response) => {       
-        //         const pdata = response.data;                               
-        //         setP1(pdata.player1);
-        //         setP2(pdata.player2);                               
-        //     });
-        //     if(p1>0 && p2>0)
-        //     {
-        //         setFlag(true)                             
-        //     }
-        // }, 1000);  
+        setInterval( () =>
+        {
+            axios({
+                method: 'get',
+                url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
+            }).then((response) => {       
+                const pdata = response.data;                               
+                setP1(pdata.player1);
+                setP2(pdata.player2);  
+                setPlyr1(pdata.player1);
+                setPlyr2(pdata.player2);                             
+            });
+            if(p1>0 && p2>0)
+            {
+                setFlag(true)                             
+            }
+        }, 2500);  
        
 
  
@@ -84,27 +90,27 @@ const Game = () =>
                 const { data } = await axios.patch(`https://fakeserversarang.herokuapp.com/player/${pid}`,
                 {
                     "player1": p1+dno,
-                    "player2": p2,
-                    "id": pid
+                    // "player2": p2,
+                    // "id": pid
                 });            
+                return data;
             }
-            updatePlayer();        
-            getData();
+            updatePlayer()            
         }
         else
         {
             const updatePlayer = async () => {
                 const { data } = await axios.patch(`https://fakeserversarang.herokuapp.com/player/${pid}`,
                 {
-                    "player1": p1,
+                    // "player1": p1,
                     "player2": p2+dno,
-                    "id": pid
+                    // "id": pid
                 });
-
-            }
-            updatePlayer();
-            getData();
+                return data;
+            }            
+            updatePlayer()
         }        
+
     }
 
 
@@ -124,7 +130,7 @@ return (
         }        
 
         <View style={{marginTop:20}}>
-            <Board pl1={p1} pl2={p2}/>
+            <Board pl1={plyr1} pl2={plyr2}/>
         </View>
 
         <View style={{marginTop:20}}>

@@ -6,6 +6,7 @@ import Receive1 from './Receive1';
 import Game from './Game';
 import { Button } from 'react-native';
 import axios from 'axios'
+import Main from './Main';
 
 const Stack = createStackNavigator();
 
@@ -34,7 +35,14 @@ export default function MyStack()
     <userContext.Provider value={{p1,setP1,p2,setP2,pid,setPid,
       user1,setUser1}} >
     
-      <Stack.Navigator>        
+      <Stack.Navigator>
+
+          <Stack.Screen
+            name="Main"
+            component={Main}
+            options={{ title: 'Main' }}
+          />
+
           <Stack.Screen
             name="Start"
             component={Start}
