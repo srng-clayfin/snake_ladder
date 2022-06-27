@@ -17,6 +17,7 @@ const Game = () =>
     const [plyr1,setPlyr1] = useState(1);
     const [plyr2,setPlyr2] = useState(1);
 
+
     // const getData = () =>
     // {
     //     axios({
