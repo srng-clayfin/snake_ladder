@@ -14,7 +14,6 @@ const App = () =>
   return (
     
       <NavigationContainer>
-  
             <MyStack />
   
       </NavigationContainer>    

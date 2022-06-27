@@ -40,12 +40,15 @@ export default Main
 const styles = StyleSheet.create({  
   parent : 
   {
-    paddingTop:80,
+    paddingTop:170,
+    height: "100%",
+    backgroundColor:"#ebfaf8",
   },
   background: {
     width: '100%',
     height: '100%',        
-    alignItems: "center",    
+    alignItems: "center",   
+    marginLeft:"5%" 
   },
   logo: {
     width: 100,
