@@ -20,9 +20,8 @@ export const Board = (p) =>
                     flexWrap: 'wrap',
                     padding: 2,
                 }}>
-
-                    {
-                        [...Array(100)].map((el, i) =>
+                    {                     
+                     [...Array(100)].map((el, i) =>
                             <View key={i}>
                                 <Block value={100-i} place1={p.pl1} place2={p.pl2} />
                             </View>

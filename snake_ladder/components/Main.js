@@ -5,17 +5,21 @@ import LottieView from 'lottie-react-native';
 const Main = ({navigation}) => 
 {
 
-  const [flag,setFlag] = useState(false);
 
+  const [flag,setFlag] = useState(false);
+  const [count,setCount] = useState(0);
+  
   return (
     <View style={styles.parent}>
       
       {!flag ?
         <View style={styles.background}>
           <LottieView
-            style={{ width: 300, height: 300, }}
+            style={{ width: 350, height: 350, }}
             source={require('./assets/79535-snake-ladders-game.json')}
-            autoPlay loop={false}
+            autoPlay 
+            duration={5000}
+            loop={false}
             onAnimationFinish={() => setFlag(!flag)} 
             />
         </View>
@@ -59,6 +63,7 @@ const styles = StyleSheet.create({
   {
     borderWidth:2,
     marginLeft:100,
+    marginTop:100,
     borderColor:'#ff2929',
     alignItems:'center',
     justifyContent:'center',

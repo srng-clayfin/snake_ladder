@@ -1,4 +1,4 @@
-import { ImageBackground, TouchableOpacity, StyleSheet, Text, View, Alert, ActivityIndicator } from 'react-native'
+import { ImageBackground, TouchableOpacity, StyleSheet, Text, View, ActivityIndicator } from 'react-native'
 import React, { useContext, useState } from 'react'
 import axios from 'axios'
 import { userContext } from './MyStack'
@@ -65,8 +65,7 @@ const Game = () =>
             {
                 setFlag(true)                             
             }
-        }, 2500);  
-       
+        }, 2500);        
 
  
     const handleDice = () =>
@@ -116,9 +115,9 @@ const Game = () =>
 
 
 return (
-    <View style={{marginTop:20}}>
+    <View style={{backgroundColor:"#ebfaf8",height:"100%"}}>  
         {flag ?
-            <View style={{alignItems:"center"}}>
+            <View style={{alignItems:"center",marginTop:20,}}>
                 <Text style={{fontSize:20,fontWeight:"bold"}}>Players</Text>
                 <Text style={{fontSize:12,fontWeight:"bold"}}>Player1 : {p1}</Text>
                 <Text style={{fontSize:12,fontWeight:"bold"}}>Player2 : {p2}</Text>
@@ -130,34 +129,41 @@ return (
             </View>
         }        
 
-        <View style={{marginTop:20}}>
-            <Board pl1={plyr1} pl2={plyr2}/>
-        </View>
+        {flag ? 
+        <>
+            <View style={{marginTop:20}}>
+                <Board pl1={plyr1} pl2={plyr2}/>
+            </View>
 
-        <View style={{marginTop:20}}>
-        </View>
-        
-        <View style={ styles.diceparent }>  
-          <TouchableOpacity
-                style={styles.button}
-                    onPress={handleDice} >
+            <View style={{marginTop:20}}>
+            </View>
+            
+            <View style={ styles.diceparent }>  
+            <TouchableOpacity
+                    style={styles.button}
+                        onPress={handleDice} >
 
-                    <ImageBackground
-                        source={
-                            diceno === 0 ?
-                                dicelist[1]
-                                :
-                                dicelist[diceno - 1]
-                        }
-                        // source={diceImg}
-                        style={{
-                            height: "100%",
-                            width: "100%",
-                            borderRadius: 6,
-                        }}
-                />           
-            </TouchableOpacity>
-        </View>
+                        <ImageBackground
+                            source={
+                                diceno === 0 ?
+                                    dicelist[1]
+                                    :
+                                    dicelist[diceno - 1]
+                            }
+                            // source={diceImg}
+                            style={{
+                                height: "100%",
+                                width: "100%",
+                                borderRadius: 6,
+                            }}
+                    />           
+                </TouchableOpacity>
+            </View>
+        </>
+        : 
+        null
+
+        }
     </View>
   )
 }
@@ -182,3 +188,5 @@ const styles = StyleSheet.create({
         gap:100
     }
 });
+
+

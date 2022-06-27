@@ -1,10 +1,13 @@
-import { StyleSheet, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, View } from 'react-native';
+import React from 'react';
 import { Button } from 'react-native-elements';
 
-const Start = ({navigation}) => {
+const Start = ({navigation}) => 
+{
+
+
   return (
-    <View style={{padding:30}}>
+    <View style={{padding:30,backgroundColor:"#ebfaf8",height:"100%"}}>
         <View style={styles.top}>
               <Button
                     title="Create Joining Code ... "            
@@ -14,6 +17,7 @@ const Start = ({navigation}) => {
         </View>
 
         <View style={styles.middle}>
+
         </View>
 
         <View style={styles.bottom}>                
@@ -44,7 +48,7 @@ const styles = StyleSheet.create({
   } ,
   middle : 
   {
-    height: "30%",    
+    height: "15%",    
     width: "4%", 
     marginLeft:"49%",       
     borderWidth:1,

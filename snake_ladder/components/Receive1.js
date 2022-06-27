@@ -49,7 +49,7 @@ const Receive1 = ({navigation}) =>
         }
 
   return (
-    <View>
+    <View style={{backgroundColor:"#ebfaf8",height:"100%"}}>  
         <View><Text style={{fontSize:20,fontWeight:"bold",marginTop:40}}>Enter Code...</Text></View>          
       
         <TextInput

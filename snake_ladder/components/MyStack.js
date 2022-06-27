@@ -40,7 +40,7 @@ export default function MyStack()
           <Stack.Screen
             name="Main"
             component={Main}
-            options={{ title: 'Main' }}
+            options={{ headerShown: false }}
           />
 
           <Stack.Screen

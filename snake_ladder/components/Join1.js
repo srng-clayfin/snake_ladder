@@ -40,7 +40,7 @@ const Join1 = ({navigation}) =>
 
 
   return (
-    <View>        
+    <View style={{backgroundColor:"#ebfaf8",height:"100%"}}>        
         <View style={{alignItems:"center"}}>
             <Text style={{fontSize:24}}>Send this code to your friend</Text>
             <Text style={{fontWeight:"bold",fontSize:24}}>{rno}</Text>
