@@ -21,7 +21,7 @@ const App = () =>
 
     
       // <View>        
-      //   <Main />
+      //   <MainPage />
       // </View>
       
 
