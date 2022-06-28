@@ -1,9 +1,12 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Image } from 'react-native';
 import React from 'react';
 import { Button } from 'react-native-elements';
+const snake1 = require("./assets/snake.png");
 
 const Start = ({navigation}) => 
 {
+
+  //completed 
 
 
   return (
@@ -14,12 +17,7 @@ const Start = ({navigation}) =>
                     type="clear"
                     onPress={() => navigation.navigate('Join1')}
               />
-        </View>
-
-        <View style={styles.middle}>
-
-        </View>
-
+        </View>        
         <View style={styles.bottom}>                
                   <Button
                     title="Enter Joining Code... "
@@ -27,8 +25,12 @@ const Start = ({navigation}) =>
                     onPress={() => navigation.navigate('Receive1')}
                   />
         </View>
-
-
+        <View  style={styles.imgview}>
+            <Image
+              style={styles.tinyLogo}    
+              source={snake1}
+            />
+        </View>
     </View>
   )
 }
@@ -58,9 +60,25 @@ const styles = StyleSheet.create({
   bottom : 
   {
     borderWidth:2,
+    marginTop:"35%",
     borderColor:"#0488c9",
     borderBottomLeftRadius:35,
     borderBottomRightRadius:35,
-    backgroundColor: "#c9edff",     
- }    
+    backgroundColor: "#c9edff",
+    
+ },
+ tinyLogo: 
+ {
+  width: "100%",
+  height: "100%",
+  resizeMode:'center'
+  },    
+  imgview:
+  {
+    height:100,
+    width: 80,
+    position: 'absolute', 
+    top:200,
+    left:150,
+  }
 })
