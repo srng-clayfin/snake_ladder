@@ -4,7 +4,7 @@ import Start from './Start';
 import Join1 from './Join1';
 import Receive1 from './Receive1';
 import Game from './Game';
-import { Button } from 'react-native';
+import { Button, View } from 'react-native';
 import axios from 'axios';
 import Main from './Main';
 import AntDesign from 'react-native-vector-icons/AntDesign'
@@ -48,8 +48,13 @@ export default function MyStack()
           <Stack.Screen
             name="Start"
             component={Start}
-            options={{ title: 'Start' }}
-          />
+            options={({ navigation, route }) => ({
+              headerLeft: (props) => (
+                  <AntDesign name='retweet' color={'black'} size={26}  {...props}
+                  title="Restart"
+                  onPress={() => delData(navigation)}/>
+              ),
+          })}      />
 
           <Stack.Screen name="Join1" component={Join1} 
           options={({ navigation, route }) => ({
