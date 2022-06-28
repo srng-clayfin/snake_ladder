@@ -5,12 +5,14 @@ import Join1 from './Join1';
 import Receive1 from './Receive1';
 import Game from './Game';
 import { Button } from 'react-native';
-import axios from 'axios'
+import axios from 'axios';
 import Main from './Main';
-
+import AntDesign from 'react-native-vector-icons/AntDesign'
 const Stack = createStackNavigator();
-
 export const userContext = React.createContext();
+
+
+
 
 export default function MyStack()
 {
@@ -25,7 +27,7 @@ export default function MyStack()
     axios.delete('https://fakeserversarang.herokuapp.com/player/'+pid)
     .then(response => console.log(response.data));
 
-    navigation.navigate('Start');
+    navigation.navigate('Main');
   }
  
 
@@ -48,37 +50,31 @@ export default function MyStack()
             component={Start}
             options={{ title: 'Start' }}
           />
+
           <Stack.Screen name="Join1" component={Join1} 
           options={({ navigation, route }) => ({
-            headerLeft: (props) => (
-                <Button
-                    {...props}
-                    title="Restart"
-                    onPress={() => delData(navigation)}
-                />
+            headerLeft: (props) => (               
+                <AntDesign name='retweet' color={'black'} size={26}  {...props}
+                title="Restart"
+                onPress={() => delData(navigation)}/>
             ),
         })}      />
 
           <Stack.Screen name="Receive1" component={Receive1} 
           options={({ navigation, route }) => ({
             headerLeft: (props) => (
-                <Button
-                    {...props}
-                    title="Restart"
-                    onPress={() => delData(navigation)}
-                />
+              <AntDesign name='retweet' color={'black'} size={26}  {...props}
+              title="Restart"
+              onPress={() => delData(navigation)}/>
             ),
         })}/>
 
           <Stack.Screen name='Game' component={Game} 
           options={({ navigation, route }) => ({
             headerLeft: (props) => (
-                <Button
-                    {...props}
-                    title="Restart"
-                    // onPress={() => navigation.navigate('Start')}
-                    onPress={() => delData(navigation)}
-                />
+              <AntDesign name='retweet' color={'black'} size={26}  {...props}
+              title="Restart"
+              onPress={() => delData(navigation)}/>
             ),
         })}/>    
 

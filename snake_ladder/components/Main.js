@@ -28,7 +28,10 @@ const Main = ({navigation}) =>
 
         <TouchableOpacity
           style={styles.topacity}
-          onPress={() => navigation.navigate('Start')}
+          onPress={() => {
+            navigation.navigate('Start');
+            setFlag(!flag)
+          }}
         >
             <Text style={styles.text}>Start Game</Text>
         </TouchableOpacity>       
