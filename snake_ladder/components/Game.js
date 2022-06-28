@@ -1,11 +1,11 @@
-import { ImageBackground, TouchableOpacity, StyleSheet, Text, View, ActivityIndicator } from 'react-native'
-import React, { useContext, useState } from 'react'
-import axios from 'axios'
-import { userContext } from './MyStack'
-import { Board } from './Board'
+import { ImageBackground, TouchableOpacity, StyleSheet, Text, View, ActivityIndicator } from 'react-native';
+import React, { useContext, useState } from 'react';
+import axios from 'axios';
+import { userContext } from './MyStack';
+import { Board } from './Board';
 
 const dicelist = [require("./assets/1.png"), require("./assets/2.png"), require("./assets/3.png"),
-    require("./assets/4.png"), require("./assets/5.png"), require("./assets/6.png")]
+                  require("./assets/4.png"), require("./assets/5.png"), require("./assets/6.png")];
 
 const Game = () => 
 {     
