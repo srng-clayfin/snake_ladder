@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, Button } from 'react-native'
+import { StyleSheet, Text, View, TextInput } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { userContext } from './MyStack'
+import { Button } from 'react-native-elements';
 
 
 const Join1 = ({navigation}) => 
@@ -29,35 +30,75 @@ const Join1 = ({navigation}) =>
         }
     }
 
+
     useEffect(() => 
     {
         const no = Math.floor((Math.random()*10000000)+1);
-        setPid(no)
-        setRno(no);
+        setPid(no);
+        setRno(no);        
         createData(no);
     },[])
   
 
 
   return (
-    <View style={{backgroundColor:"#ebfaf8",height:"100%"}}>        
-        <View style={{alignItems:"center"}}>
-            <Text style={{fontSize:24}}>Send this code to your friend</Text>
+    <View style={{backgroundColor:"#ebfaf8",height:"100%",padding:20}}>  
+
+        <View style={{alignItems:'center'}}>
+            <Text style={{fontSize:22,fontWeight:"bold",marginTop:70}}>
+                Send This Code To Your Friend
+            </Text>
+        </View>          
+      
+        <View style={styles.code}>
             <Text style={{fontWeight:"bold",fontSize:24}}>{rno}</Text>
-        </View>
-        <Button
-            title="Send This Code & Start Game"
-            color="#f194ff"
-            onPress={() => 
-                {
-                    setUser1(true)
-                    navigation.navigate('Game')
-                }}
-        />
+        </View>       
+
+        <View style={styles.bottom}>                
+            <Button
+                title="Start Game"
+                type="clear"
+                onPress={() => 
+                    {
+                        setUser1(true)
+                        navigation.navigate('Game')
+                    }} 
+                />
+        </View>      
     </View>
+
   )
 }
 
 export default Join1
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    code:{              
+        height : 50,                
+        marginBottom:7,
+        paddingLeft:"35%",
+        justifyContent:'center',
+        marginTop:40,
+        borderBottomWidth:2        
+    },
+    bottom : 
+    {
+      borderWidth:2,
+      height : 90,
+      borderColor:"#0488c9",
+      borderBottomLeftRadius:60,
+      borderBottomRightRadius:60,
+      backgroundColor: "#c9edff",      
+      paddingTop:20
+   },
+   bottom1 : 
+    {
+      borderWidth:2,
+      height : 90,
+      borderColor: "#00a827",
+      borderBottomLeftRadius:60,
+      borderBottomRightRadius:60,
+      backgroundColor: "#d0f7d9",      
+      paddingTop:20
+   },
+})

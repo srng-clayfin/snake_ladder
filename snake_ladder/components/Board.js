@@ -39,15 +39,12 @@ const styles = StyleSheet.create({
     container: {
         height: windowWidth-20,
         width : windowWidth-20,
-      borderWidth:3,
-      borderColor:"red",
-      marginLeft:"2.5%"
-
+      borderWidth:2,
+      borderColor:"red", 
     },
     image: {
         height: windowWidth - 25,
         width: windowWidth - 25,
-
     },
     
 });

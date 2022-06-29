@@ -1,7 +1,8 @@
-import { StyleSheet, Text, View, TextInput, Button, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
 import React, { useContext, useState } from 'react';
 import { userContext } from './MyStack';
 import axios from 'axios';
+import { Button } from 'react-native-elements';
 
 
 const Receive1 = ({navigation}) => 
@@ -49,8 +50,8 @@ const Receive1 = ({navigation}) =>
         }
 
   return (
-    <View style={{backgroundColor:"#ebfaf8",height:"100%"}}>  
-        <View><Text style={{fontSize:20,fontWeight:"bold",marginTop:40}}>Enter Code...</Text></View>          
+    <View style={{backgroundColor:"#ebfaf8",height:"100%",padding:20}}>  
+        <View style={{alignItems:'center'}}><Text style={{fontSize:20,fontWeight:"bold",marginTop:40}}>Enter Code...</Text></View>          
       
         <TextInput
             style={styles.input}
@@ -58,17 +59,27 @@ const Receive1 = ({navigation}) =>
             placeholder="Enter Joining code"
             keyboardType="numeric"
         />
+
         {!flag ? 
-            <Button
-                title="Check Joining "            
-                onPress={() => checkData()}
-            />    
+                <View style={styles.bottom}>                
+                    <Button
+                        title="Enter Joining Code... "
+                        type="clear"
+                        onPress={() => checkData()}
+                      />
+                </View>
         :    
-            <Button
-                title="Start Game"   
-                color="#f194ff"         
-                onPress={startGame}
-            />
+                <View style={styles.bottom1}>                
+                    <Button                         
+                        title="Start Game"                        
+                        type="clear"                                 
+                        onPress={startGame}
+
+                        titleStyle={{color:"#00a827"}}
+
+                    />
+           
+                </View>
         }
     </View>
   )
@@ -76,10 +87,32 @@ const Receive1 = ({navigation}) =>
 
 export default Receive1
 
-const styles = StyleSheet.create({ input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  }
+const styles = StyleSheet.create({ 
+    input: {
+        height: 50,
+        marginBottom:7,
+        marginTop:50,                
+        borderBottomWidth:3,
+        paddingLeft: 10,        
+    },
+    bottom : 
+    {
+      borderWidth:2,
+      height : 90,
+      borderColor:"#0488c9",
+      borderBottomLeftRadius:60,
+      borderBottomRightRadius:60,
+      backgroundColor: "#c9edff",      
+      paddingTop:20
+   },
+   bottom1 : 
+    {
+      borderWidth:2,
+      height : 90,
+      borderColor: "#00a827",
+      borderBottomLeftRadius:60,
+      borderBottomRightRadius:60,
+      backgroundColor: "#d0f7d9",      
+      paddingTop:20
+   },
 })
