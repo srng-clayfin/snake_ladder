@@ -18,7 +18,7 @@ const Main = ({navigation}) =>
             style={{ width: 350, height: 350, }}
             source={require('./assets/79535-snake-ladders-game.json')}
             autoPlay 
-            duration={5000}
+            duration={3000}
             loop={false}
             onAnimationFinish={() => setFlag(!flag)} 
             />
