@@ -17,20 +17,17 @@ export const Block = (p) =>
                 <View style={styles.parent}>                   
                    {         
                     p.value === p.place1 && p.value === p.place2 ?
-                    // <Text style={styles.child1}>
-                    <Text style={{backgroundColor:'blue'}}>
+                    <Text style={styles.child1}>
                         {user1+user2}
                     </Text>
                         :
                     p.value === p.place1 ?                
-                    // <Text style={styles.child}>
-                    <Text style={{backgroundColor:'red'}}>
+                    <Text style={styles.child}>
                         {user1}
                     </Text>
                         :                    
                     p.value === p.place2 ?                
-                    // <Text style={styles.child}>
-                    <Text style={{backgroundColor:'green'}}>
+                    <Text style={styles.child}>
                         {user2}
                     </Text>
                         :                      

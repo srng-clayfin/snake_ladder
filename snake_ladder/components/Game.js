@@ -11,14 +11,10 @@ const dicelist = [require("./assets/1.png"), require("./assets/2.png"), require(
 const Game = () => 
 {     
     const [flag,setFlag] = useState(false);
-    const [diceflag,setDiceflag] = useState(false);
+    const [diceflag,setDiceflag] = useState(false);    
 
-    
-
-    const {p1,setP1,p2,setP2,pid,user1,setUser1} = useContext(userContext);      
+    const {p1,setP1,p2,setP2,pid,user1,setUser1} = useContext(userContext);
     const [diceno, setDiceno] = useState(0);          
-
-
 
     // const getData = () =>
     // {
@@ -56,7 +52,6 @@ const Game = () =>
     // // },[p1,p2])
 
 
-    
         
         setInterval( () =>
         {
@@ -74,7 +69,7 @@ const Game = () =>
             }
         }, 2500);        
 
- 
+        
     const handleDice = () =>
     {
         const count = Math.floor(Math.random() * (6 - 1 + 1) + 1);
@@ -226,7 +221,7 @@ const styles = StyleSheet.create({
     diceparent2:
     {        
         alignItems: "center",        
-        borderWidth:2,          
+                  
         position: 'absolute',
         top: 580,
     },

@@ -24,7 +24,7 @@ const Main = ({navigation}) =>
             />
         </View>
 
-      :
+      :    
 
         <TouchableOpacity
           style={styles.topacity}
