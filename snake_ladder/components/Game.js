@@ -1,5 +1,5 @@
 import { ImageBackground, TouchableOpacity, StyleSheet, Text, View, ActivityIndicator } from 'react-native';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { userContext } from './MyStack';
 import { Board } from './Board';
@@ -11,33 +11,42 @@ const dicelist = [require("./assets/1.png"), require("./assets/2.png"), require(
 const Game = () => 
 {     
     const [flag,setFlag] = useState(false);
+    const [diceflag,setDiceflag] = useState(false);
+
+    
 
     const {p1,setP1,p2,setP2,pid,user1,setUser1} = useContext(userContext);      
     const [diceno, setDiceno] = useState(0);          
 
 
 
-    // // const getData = () =>
-    // // {
-    // //     axios({
-    // //         method: 'get',
-    // //         url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
-    // //     }).then((response) => {       
-    // //         const pdata = response.data;                               
-    // //         setP1(pdata.player1);
-    // //         setP2(pdata.player2);                               
-    // //         // console.log("Player No. : ",p1,p2,"Srng  : ",pdata.player1,pdata.player1)
-    // //     });        
-    // //     if(p1>0 && p2>0)
-    // //     {
-    // //         setFlag(true)                             
-    // //     }
-    // // }    
-    // // useEffect(() =>
-    // // {
-    // //     getData()
-    // // })    
-    // // useEffect(() =>
+    // const getData = () =>
+    // {
+    //     axios({
+    //         method: 'get',
+    //         url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
+    //     }).then((response) => {       
+    //         const pdata = response.data;                               
+    //         setP1(pdata.player1);
+    //         setP2(pdata.player2);                               
+    //         console.log("Player No. : ",p1,p2,"Srng  : ",pdata.player1,pdata.player1)
+    //     });        
+    //     if(p1>0 && p2>0)
+    //     {
+    //         setFlag(true)                             
+    //     }
+    // }    
+    // useEffect(() =>
+    // {
+    //     getData()
+    // },[diceflag]);
+    
+    // useEffect(() =>
+    // {
+    //     getData()
+    // },[]);
+
+    // // // useEffect(() =>
     // // {
     // //     getData()
     // // },[])    
@@ -45,6 +54,9 @@ const Game = () =>
     // // {
     // //     getData()
     // // },[p1,p2])
+
+
+    
         
         setInterval( () =>
         {
@@ -72,6 +84,7 @@ const Game = () =>
         }
         else
         {
+            setDiceflag(!diceflag);
             setDiceno(count);
         }         
         handleuser(diceno)
@@ -213,8 +226,7 @@ const styles = StyleSheet.create({
     diceparent2:
     {        
         alignItems: "center",        
-        borderWidth:2,        
-        borderColor:'green',        
+        borderWidth:2,          
         position: 'absolute',
         top: 580,
     },
