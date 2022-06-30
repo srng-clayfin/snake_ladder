@@ -15,8 +15,6 @@ const Game = () =>
     const {p1,setP1,p2,setP2,pid,user1,setUser1} = useContext(userContext);      
     const [diceno, setDiceno] = useState(0);          
 
-    const [plyr1,setPlyr1] = useState(1);
-    const [plyr2,setPlyr2] = useState(1);
 
 
     // // const getData = () =>
@@ -28,8 +26,6 @@ const Game = () =>
     // //         const pdata = response.data;                               
     // //         setP1(pdata.player1);
     // //         setP2(pdata.player2);                               
-    //         // setPlyr1(pdata.player1);
-    //         // setPlyr2(pdata.player2);
     // //         // console.log("Player No. : ",p1,p2,"Srng  : ",pdata.player1,pdata.player1)
     // //     });        
     // //     if(p1>0 && p2>0)
@@ -59,8 +55,6 @@ const Game = () =>
                 const pdata = response.data;                               
                 setP1(pdata.player1);
                 setP2(pdata.player2);  
-                setPlyr1(pdata.player1);
-                setPlyr2(pdata.player2);                             
             });
             if(p1>0 && p2>0)
             {
@@ -136,7 +130,7 @@ return (
 
         <>
             <View style={{marginTop:20}}>
-                <Board pl1={plyr1} pl2={plyr2}/>
+                <Board pl1={p1} pl2={p2}/>
             </View>
 
             <View style={styles.line}>
@@ -156,8 +150,7 @@ return (
                                         dicelist[1]
                                         :
                                         dicelist[diceno - 1]
-                                }
-                                // source={diceImg}
+                                }                                
                                 style={{
                                     height: "100%",
                                     width: "100%",
