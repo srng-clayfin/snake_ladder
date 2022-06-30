@@ -13,34 +13,43 @@ const Game = () =>
     const [flag,setFlag] = useState(false);
     const [diceflag,setDiceflag] = useState(false);    
 
+    const [compflag,setCompflag] = useState(false);
+
     const {p1,setP1,p2,setP2,pid,user1,setUser1} = useContext(userContext);
     const [diceno, setDiceno] = useState(0);          
 
-    // const getData = () =>
-    // {
-    //     axios({
-    //         method: 'get',
-    //         url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
-    //     }).then((response) => {       
-    //         const pdata = response.data;                               
-    //         setP1(pdata.player1);
-    //         setP2(pdata.player2);                               
-    //         console.log("Player No. : ",p1,p2,"Srng  : ",pdata.player1,pdata.player1)
-    //     });        
-    //     if(p1>0 && p2>0)
-    //     {
-    //         setFlag(true)                             
-    //     }
-    // }    
-    // useEffect(() =>
-    // {
-    //     getData()
-    // },[diceflag]);
+    setCompflag(true);
+
+    const getData = () =>
+    {
+        axios({
+            method: 'get',
+            url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
+        }).then((response) => {       
+            const pdata = response.data;                               
+            setP1(pdata.player1);
+            setP2(pdata.player2);                               
+            console.log("Player No. : ",p1,p2,"Srng  : ",pdata.player1,pdata.player1)
+        });        
+        if(p1>0 && p2>0)
+        {
+            setFlag(true)                             
+        }
+    }    
+    useEffect(() =>
+    {
+        getData()
+    },[diceflag,compflag]);
     
-    // useEffect(() =>
-    // {
-    //     getData()
-    // },[]);
+    useEffect(() =>
+    {
+        getData()
+    },[]);
+
+    if(!flag)
+    {
+        setCompflag(!compflag);
+    }
 
     // // // useEffect(() =>
     // // {
@@ -53,21 +62,21 @@ const Game = () =>
 
 
         
-        setInterval( () =>
-        {
-            axios({
-                method: 'get',
-                url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
-            }).then((response) => {       
-                const pdata = response.data;                               
-                setP1(pdata.player1);
-                setP2(pdata.player2);  
-            });
-            if(p1>0 && p2>0)
-            {
-                setFlag(true)                             
-            }
-        }, 2500);        
+        // setInterval( () =>
+        // {
+        //     axios({
+        //         method: 'get',
+        //         url: `https://fakeserversarang.herokuapp.com/player/${pid}`,
+        //     }).then((response) => {       
+        //         const pdata = response.data;                               
+        //         setP1(pdata.player1);
+        //         setP2(pdata.player2);  
+        //     });
+        //     if(p1>0 && p2>0)
+        //     {
+        //         setFlag(true)                             
+        //     }
+        // }, 2500);        
 
         
     const handleDice = () =>
@@ -248,5 +257,4 @@ const styles = StyleSheet.create({
     }
 
 });
-
 

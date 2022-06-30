@@ -6,15 +6,12 @@ import MyStack from './components/MyStack'
 const App = () =>   
 {  
   return (
-    
+        
       <NavigationContainer>
             <MyStack />  
       </NavigationContainer>    
     
       // <Game />
-      
-      
-
   )
 }
 
