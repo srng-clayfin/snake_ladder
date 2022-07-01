@@ -2,6 +2,7 @@ import { Alert, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from
 import React, { useContext, useEffect, useState } from 'react'
 import { Board } from '../Board';
 import { userContext } from '../MyStack';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const dicelist = [require("../assets/1.png"), require("../assets/2.png"), require("../assets/3.png"),
                   require("../assets/4.png"), require("../assets/5.png"), require("../assets/6.png")];

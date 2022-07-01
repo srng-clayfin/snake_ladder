@@ -8,10 +8,6 @@ const blockwidth = windowWidth-20
 export const Block = (p) =>
 {
       let user = 1;     
-      
-      const user1 = "😈";
-      const user2 = "🎅";
-
 
     return(
             <>
@@ -33,7 +29,7 @@ export const Block = (p) =>
                     <View style={styles.child}>                        
                         <MaterialCommunityIcons name='emoticon-devil'  
                             color={'red'} 
-                            size={15}
+                            size={20}
                         />            
                     </View>
                         :                    
@@ -41,7 +37,7 @@ export const Block = (p) =>
                     <View style={styles.child}>                        
                         <MaterialCommunityIcons name='emoticon-devil'  
                                 color={'blue'} 
-                                size={15}
+                                size={20}
                         />
                     </View>
                         :                      
