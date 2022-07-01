@@ -159,8 +159,8 @@ const OfflineGame = () => {
         <View style={styles.ppdetails}>
             <View style={styles.pdetails}>          
                     <Text style={{fontSize:22,fontWeight:"bold"}}>Score Board</Text>
-                    <Text style={{fontSize:14,fontWeight:"bold"}}>{`${name1} 😈 : ${place1}`}</Text>
-                    <Text style={{fontSize:14,fontWeight:"bold"}}>{`${name2} 🎅 : ${place2}`}</Text>                
+                    <Text style={{fontSize:14,fontWeight:"bold",color:'red'}}>{`${name1}  : ${place1}`}</Text>
+                    <Text style={{fontSize:14,fontWeight:"bold",color:'blue'}}>{`${name2}  : ${place2}`}</Text>                
             </View>  
         </View>
         {/* <></> */}
