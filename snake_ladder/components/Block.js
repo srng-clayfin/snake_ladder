@@ -1,5 +1,6 @@
-import React, {useState } from 'react'
-import { View, Text, StyleSheet, Dimensions } from "react-native"
+import React, {useState } from 'react';
+import { View, Text, StyleSheet, Dimensions } from "react-native";
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const windowWidth = Dimensions.get('window').width;
 const blockwidth = windowWidth-20
@@ -16,22 +17,35 @@ export const Block = (p) =>
             <>
                 <View style={styles.parent}>                   
                    {         
-                    p.value === p.place1 && p.value === p.place2 ?
-                    <Text style={styles.child1}>
-                        {user1+user2}
-                    </Text>
+                    p.value === p.place1 && p.value === p.place2 ?                                        
+                    <View style={styles.child1}>                        
+                        <MaterialCommunityIcons name='emoticon-devil'  
+                                color={'blue'} 
+                                size={15}
+                        />
+                        <MaterialCommunityIcons name='emoticon-devil'  
+                            color={'red'} 
+                            size={15}
+                        />            
+                    </View>
                         :
                     p.value === p.place1 ?                
-                    <Text style={styles.child}>
-                        {user1}
-                    </Text>
+                    <View style={styles.child}>                        
+                        <MaterialCommunityIcons name='emoticon-devil'  
+                            color={'red'} 
+                            size={15}
+                        />            
+                    </View>
                         :                    
                     p.value === p.place2 ?                
-                    <Text style={styles.child}>
-                        {user2}
-                    </Text>
+                    <View style={styles.child}>                        
+                        <MaterialCommunityIcons name='emoticon-devil'  
+                                color={'blue'} 
+                                size={15}
+                        />
+                    </View>
                         :                      
-                    <Text style={styles.child}>
+                    <Text style={styles.child0}>
                        {p.value}
                     </Text>
                    }                 
@@ -46,12 +60,17 @@ const styles = StyleSheet.create ({
             width: (blockwidth/10)-1,
             borderWidth:1
         },
-    child:{
-            textAlign: 'center',
-            marginTop: 6,
-            fontWeight: 'normal',
-        },
-        child1:{
-            textAlign: 'center',  
-        }    
+    child0:{
+        textAlign: 'center',
+        marginTop: 6,
+        fontWeight: 'normal',        
+    },
+    child1:{            
+        alignItems:'center',        
+    } ,
+    child:
+    {
+        alignItems:'center',
+        paddingTop:"25%",        
+    }   
  })

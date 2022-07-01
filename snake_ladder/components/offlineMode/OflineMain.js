@@ -1,56 +1,57 @@
-import { StyleSheet, Text, TextInput, View } from 'react-native'
-import React, { useContext, useState } from 'react'
+import { Alert, StyleSheet, TextInput, View } from 'react-native'
+import React, { useContext} from 'react'
 import { Button } from 'react-native-elements'
 import { userContext } from '../MyStack'
-import { Formik } from 'formik'
+
 
 
 
 const OfflineMain = ({navigation}) => {
 
     
-    const {name1,name2,setName1,setName2} = useContext(userContext);
+    const {name1,name2,setName1,setName2} = useContext(userContext);   
 
     console.log(name1,name2)
 
-//   return (
-//     <View style={{padding:30,paddingTop:150}}>
+    const handlesubmit = () =>
+    {
+        if (name1.trim() != ""  && name2.trim() != "") 
+        {
+            navigation.navigate("OfflineGame");
+        }
+        else 
+        {
+            Alert.alert("Error","Please Enter Player's Name... :) ");            
+        }     
+    }
+
+  return (
+    <View style={{padding:30,paddingTop:150}}>
         
-//         <TextInput
-//             style={styles.input}
-//             onChangeText={(e) => setName1(e) }        
-//             placeholder="Enter Player1 Name :"                        
-//         />
+        <TextInput
+            style={styles.input}
+            onChangeText={(e) => setName1(e) }        
+            placeholder="Enter Player1 Name :"                        
+        />
 
-//         <TextInput
-//             style={styles.input}
-//             onChangeText={(e) => setName2(e) }        
-//             placeholder="Enter Player2 Name :"            
-//         />
+        <TextInput
+            style={styles.input}
+            onChangeText={(e) => setName2(e) }        
+            placeholder="Enter Player2 Name :"            
+        />
 
-//         <View style={styles.bottom1}>                
-//             <Button                         
-//                 title="Start Game"                        
-//                 type="clear"                                 
-//                 onPress={() => navigation.navigate("OfflineGame")}
-//                 titleStyle={{color:"#00a827"}}
-//             />
-//         </View>
-//     </View>
+        <View style={styles.bottom1}>                
+            <Button                         
+                title="Start Game"                        
+                type="clear"                                 
+                // onPress={() => navigation.navigate("OfflineGame")}
+                onPress={handlesubmit}
+                titleStyle={{color:"#00a827"}}
+            />
+        </View>
+    </View>
     
-//   )
-
-    return (
-        <Formik>
-            <View>
-                <Text>Username</Text>
-                <TextInput style={styles.ikinput}/>
-                <Text>Password</Text>
-                <TextInput style={styles.iknput}/>
-                <Button title="Submit"/>
-            </View>
-        </Formik>
-    )
+  )
 
 }
 
