@@ -74,9 +74,7 @@ const Receive1 = ({navigation}) =>
                         title="Start Game"                        
                         type="clear"                                 
                         onPress={startGame}
-
                         titleStyle={{color:"#00a827"}}
-
                     />
            
                 </View>
@@ -109,9 +107,9 @@ const styles = StyleSheet.create({
     {
       borderWidth:2,
       height : 90,
-      borderColor: "#00a827",
       borderBottomLeftRadius:60,
       borderBottomRightRadius:60,
+      borderColor: "#00a827",
       backgroundColor: "#d0f7d9",      
       paddingTop:20
    },

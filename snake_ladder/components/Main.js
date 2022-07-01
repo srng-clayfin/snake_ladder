@@ -29,7 +29,7 @@ const Main = ({navigation}) =>
         <TouchableOpacity
           style={styles.topacity}
           onPress={() => {
-            navigation.navigate('Start');
+            navigation.navigate('Offline');
             setFlag(!flag)
           }}
         >

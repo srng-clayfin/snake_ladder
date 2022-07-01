@@ -1,9 +1,9 @@
+
 import { ImageBackground, TouchableOpacity, StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { userContext } from './MyStack';
 import { Board } from './Board';
-const image = require('./assets/score-bkgimg.png');
 
 const dicelist = [require("./assets/1.png"), require("./assets/2.png"), require("./assets/3.png"),
                   require("./assets/4.png"), require("./assets/5.png"), require("./assets/6.png")];
