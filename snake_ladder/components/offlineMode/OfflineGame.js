@@ -7,15 +7,18 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const dicelist = [require("../assets/1.png"), require("../assets/2.png"), require("../assets/3.png"),
                   require("../assets/4.png"), require("../assets/5.png"), require("../assets/6.png")];
 
-const OfflineGame = () => {
+const OfflineGame = ({navigation}) => {
 
     const {p1,setP1,p2,setP2,name1,name2} = useContext(userContext);
     const [diceno,setDiceno] = useState(0);
     const [flag,setFlag] = useState(false);
+    const [alertbox,setAlertBox] = useState(true);
     
     const [place1,setPlace1] = useState(1);
     const [place2,setPlace2] = useState(1);
     const [snakeuser,setSnakeuser]  = useState(false);
+    const [cnt,setCnt] = useState(0)
+
 
     const handleDice = () => 
     {
@@ -123,11 +126,10 @@ const OfflineGame = () => {
 
     const playerWin = (p) =>
     {
-      Alert.alert("Winner",p+" Win 👑");
-      setPlace1(0);
-      setPlace2(0);
+      Alert.alert("Winner",
+      p+" Win 👑")    
     }
-
+    
     useEffect(() =>
     {        
         if(snakeuser)
@@ -139,9 +141,10 @@ const OfflineGame = () => {
             setPlace2(place2+diceno);         
         }
 
-        player1();
-        player2();
+        // player1();
+        // player2();
 
+        
         if(place1 >= 100)
         {
           playerWin(name1);

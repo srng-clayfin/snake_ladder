@@ -11,7 +11,7 @@ const OfflineMain = ({navigation}) => {
     
     const {name1,name2,setName1,setName2} = useContext(userContext);   
 
-    console.log(name1,name2)
+    //console.log(name1,name2)
 
     const handlesubmit = () =>
     {
