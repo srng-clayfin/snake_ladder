@@ -13,16 +13,18 @@ const OfflineGame = ({navigation}) => {
     const [diceno,setDiceno] = useState(0);
     const [flag,setFlag] = useState(false);
     const [alertbox,setAlertBox] = useState(true);
-    
+
+
     const [place1,setPlace1] = useState(1);
     const [place2,setPlace2] = useState(1);
     const [snakeuser,setSnakeuser]  = useState(false);
-    const [cnt,setCnt] = useState(0)
+    const [cnt,setCnt] = useState(false)
 
 
     const handleDice = () => 
     {
         const no = Math.floor(Math.random() * (6 - 1 + 1) + 1);
+        setCnt(true);
 
         if(no===diceno)
         {
@@ -198,6 +200,15 @@ const OfflineGame = ({navigation}) => {
             />           
             </TouchableOpacity>
         </View>
+        {cnt ?
+        <View style={styles.playername}>
+            <Text style={{fontSize:18,fontWeight:'bold'}}>
+                {flag? name1 : name2}
+            </Text>
+        </View>
+        :
+        null
+        }
 
 
     </View>
@@ -272,4 +283,11 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 580,
     },
+    playername:
+    {
+        alignItems: "center",        
+                  
+        position: 'absolute',
+        top: 700,
+    }
 })
