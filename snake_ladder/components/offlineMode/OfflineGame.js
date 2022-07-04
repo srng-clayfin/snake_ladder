@@ -143,8 +143,8 @@ const OfflineGame = ({navigation}) => {
             setPlace2(place2+diceno);         
         }
 
-        // player1();
-        // player2();
+        player1();
+        player2();
 
         
         if(place1 >= 100)
