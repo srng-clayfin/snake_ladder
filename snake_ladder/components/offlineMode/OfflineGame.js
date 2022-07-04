@@ -1,5 +1,5 @@
-import { Alert, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React, { useContext, useEffect, useState } from 'react'
+import { Alert, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React, { useContext, useEffect, useState } from 'react';
 import { Board } from '../Board';
 import { userContext } from '../MyStack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -7,34 +7,30 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 const dicelist = [require("../assets/1.png"), require("../assets/2.png"), require("../assets/3.png"),
                   require("../assets/4.png"), require("../assets/5.png"), require("../assets/6.png")];
 
-const OfflineGame = ({navigation}) => {
-
-    const {p1,setP1,p2,setP2,name1,name2} = useContext(userContext);
+const OfflineGame = ({navigation}) => 
+{
+    const {name1,name2} = useContext(userContext);
     const [diceno,setDiceno] = useState(0);
-    const [flag,setFlag] = useState(false);
-    const [alertbox,setAlertBox] = useState(true);
-
-
+    const [flag,setFlag] = useState(false);  
     const [place1,setPlace1] = useState(1);
     const [place2,setPlace2] = useState(1);
-    const [snakeuser,setSnakeuser]  = useState(false);
-    const [cnt,setCnt] = useState(false)
-
-
+    const [snakeuser,setSnakeuser]  = useState(false);   
+    const [count,setCount] = useState(0);    
+ 
+     
     const handleDice = () => 
     {
-        const no = Math.floor(Math.random() * (6 - 1 + 1) + 1);
-        setCnt(true);
+        const num = Math.floor(Math.random() * (6 - 1 + 1) + 1);       
 
-        if(no===diceno)
+        if(num===diceno)
         {
             handleDice();            
         }
         else
         {
-            setDiceno(no);  
-            setFlag(!flag);            
-            setSnakeuser(!snakeuser)
+            setDiceno(num);              
+            setFlag(!flag);          
+            setSnakeuser(!snakeuser);   
         }       
     } 
 
@@ -128,33 +124,45 @@ const OfflineGame = ({navigation}) => {
 
     const playerWin = (p) =>
     {
-      Alert.alert("Winner",
-      p+" Win 👑")    
+        Alert.alert(
+            'Winner',
+            p+" Win 👑",
+            [
+              {text: 'OK', onPress: () => {navigation.navigate('OfflineMain');}},
+            ],
+            {cancelable: false},
+        );
     }
+
+    (() => {
+        if(place1 >= 100)
+        {
+            setPlace1(1)
+            playerWin(name1);
+        }
+        else if(place2 >= 100)
+        {
+            setPlace2(1);
+            playerWin(name2);
+        }
+    })()
+
     
     useEffect(() =>
     {        
         if(snakeuser)
         {
-            setPlace1(place1+diceno);         
+            setPlace1(place1+diceno);            
         }
         else
-        {
-            setPlace2(place2+diceno);         
+        {            
+            setPlace2(place2+diceno);                     
         }
 
-        player1();
-        player2();
+        // player1();
+        // player2();
 
-        
-        if(place1 >= 100)
-        {
-          playerWin(name1);
-        }
-        else if(place2 >= 100)
-        {
-          playerWin(name2);
-        }
+
 
     },[flag]);
 
@@ -162,15 +170,20 @@ const OfflineGame = ({navigation}) => {
   return (
     <View style={{backgroundColor:"#ebfaf8",height:"100%", alignItems:'center'  }}>  
         <View style={styles.ppdetails}>
-            <View style={styles.pdetails}>          
-                    <Text style={{fontSize:22,fontWeight:"bold"}}>Score Board</Text>
-                    <Text style={{fontSize:14,fontWeight:"bold",color:'red'}}>{`${name1}  : ${place1}`}</Text>
-                    <Text style={{fontSize:14,fontWeight:"bold",color:'blue'}}>{`${name2}  : ${place2}`}</Text>                
+            <View style={styles.pdetails}>
+                <Text style={{fontSize:22,fontWeight:"bold"}}>Score Board</Text>
+                <View style={{flexDirection:'row'}}> 
+                    <MaterialCommunityIcons name='emoticon-devil' color={'red'} size={20} />
+                    <Text style={{fontSize:14,fontWeight:"bold",color:'red'}}>{`${name1}  : ${place1}`}</Text>                    
+                </View>                
+                <View style={{flexDirection:'row'}}> 
+                    <MaterialCommunityIcons name='emoticon-devil' color={'blue'} size={20} />
+                    <Text style={{fontSize:14,fontWeight:"bold",color:'blue'}}>{`${name2}  : ${place2}`}</Text>                                    
+                </View>                
             </View>  
         </View>
         {/* <></> */}
-        <View style={{marginTop:20}}>
-                {/* <Board pl1={p1} pl2={p2}/> */}
+        <View style={{marginTop:20}}>                
                 <Board pl1={place1} pl2={place2}/>
             </View>
 
@@ -181,36 +194,17 @@ const OfflineGame = ({navigation}) => {
             </View>
         {/* <></> */}
         <View style={ styles.diceparent2 }>  
-            <TouchableOpacity
-                    style={styles.button}
-                        onPress={handleDice}
-                        >
+            <TouchableOpacity style={styles.button} onPress={handleDice} >
                         <ImageBackground
-                            source={
-                                diceno === 0 ?
-                                    dicelist[1]
-                                    :
-                                    dicelist[diceno - 1]
-                            }                                
-                            style={{
-                                height: "100%",
-                                width: "100%",
-                                borderRadius: 6,
-                            }}
-            />           
+                            source={ diceno === 0 ? dicelist[1] : dicelist[diceno - 1] }                                
+                            style={styles.img} />           
             </TouchableOpacity>
         </View>
-        {cnt ?
         <View style={styles.playername}>
             <Text style={{fontSize:18,fontWeight:'bold'}}>
-                {flag? name1 : name2}
+                {flag? `${name2}'s turn` : `${name1}'s turn`}
             </Text>
         </View>
-        :
-        null
-        }
-
-
     </View>
   )
 }
@@ -218,15 +212,20 @@ const OfflineGame = ({navigation}) => {
 export default OfflineGame
 
 const styles = StyleSheet.create({
+    img:
+    {
+      height: "100%",
+      width: "100%",
+      borderRadius: 6,
+    },
     pdetails:
     {
         alignItems:"center",        
         paddingTop:10,
         borderWidth:2,        
-        width: "auto",
+        width: 'auto',
         height: 100,
         borderColor:'red',
-
         padding: 7,
     },
     ppdetails:
@@ -247,16 +246,14 @@ const styles = StyleSheet.create({
     },
     line :
     {
-        marginTop:25,
+        marginTop:75,
         borderWidth:4,
-        width: "100%",       
-
+        width: "100%",      
         height: 310,
         width: 330,
-        borderRadius:190,        
-
-        borderColor:'#b9eefa',
+        borderRadius:190,                      
         backgroundColor:"#b9eefa",        
+        borderColor:"#a7ebfa"        ,
     },
     diceparentwait:
     {
@@ -269,25 +266,21 @@ const styles = StyleSheet.create({
         borderWidth:2,                
         width: '100%',
         height: "100%",        
-
         position: 'absolute',
         top: 630,
-
-        borderColor:'#b9eefa',
+        borderColor:"#b9eefa",        
         backgroundColor:"#b9eefa",        
     },
     diceparent2:
     {        
-        alignItems: "center",        
-                  
-        position: 'absolute',
-        top: 580,
+        alignItems: "center",         
+        position: 'absolute',        
+        top: 560,
     },
     playername:
     {
-        alignItems: "center",        
-                  
-        position: 'absolute',
-        top: 700,
+        alignItems: "center",                        
+        position: 'absolute',        
+        top: 670,
     }
 })

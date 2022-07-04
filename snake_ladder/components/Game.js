@@ -189,12 +189,10 @@ const styles = StyleSheet.create({
     {
         marginTop:25,
         borderWidth:4,
-        width: "100%",       
-
+        width: "100%",      
         height: 310,
         width: 330,
         borderRadius:190,        
-
         borderColor:'#b9eefa',
         backgroundColor:"#b9eefa",        
     },
@@ -209,17 +207,14 @@ const styles = StyleSheet.create({
         borderWidth:2,                
         width: '100%',
         height: "100%",        
-
         position: 'absolute',
         top: 630,
-
         borderColor:'#b9eefa',
         backgroundColor:"#b9eefa",        
     },
     diceparent2:
     {        
-        alignItems: "center",        
-                  
+        alignItems: "center",                          
         position: 'absolute',
         top: 580,
     },
@@ -244,6 +239,5 @@ const styles = StyleSheet.create({
         width: 140,        
         marginBottom:5,
     }
-
 });
 
