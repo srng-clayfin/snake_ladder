@@ -1,5 +1,5 @@
 import { Alert, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Board } from '../Board';
 import { userContext } from '../MyStack';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -9,14 +9,17 @@ const dicelist = [require("../assets/1.png"), require("../assets/2.png"), requir
 
 const OfflineGame = ({navigation}) => 
 {
+
+    const srng = useRef(1);
+
     const {name1,name2} = useContext(userContext);
     const [diceno,setDiceno] = useState(0);
     const [flag,setFlag] = useState(false);  
     const [place1,setPlace1] = useState(1);
     const [place2,setPlace2] = useState(1);
     const [snakeuser,setSnakeuser]  = useState(false);   
-    const [count,setCount] = useState(0);    
- 
+    const [handlesnakeladder,setHandleSnakeLadder] = useState(false);    
+    const [count,setCount]  = useState(true);
      
     const handleDice = () => 
     {
@@ -29,8 +32,8 @@ const OfflineGame = ({navigation}) =>
         else
         {
             setDiceno(num);              
-            setFlag(!flag);          
-            setSnakeuser(!snakeuser);   
+            setFlag(!flag);                      
+            setSnakeuser(!snakeuser);            
         }       
     } 
 
@@ -128,42 +131,88 @@ const OfflineGame = ({navigation}) =>
             'Winner',
             p+" Win 👑",
             [
-              {text: 'OK', onPress: () => {navigation.navigate('OfflineMain');}},
+              {text: 'OK', onPress: () => {
+                    navigation.navigate('OfflineMain');
+                    return;
+                }},
             ],
             {cancelable: false},
         );
+        // console.log(p+" Win 👑");
     }
 
     (() => {
         if(place1 >= 100)
         {
             setPlace1(1)
-            playerWin(name1);
+            if(count)
+            {
+                playerWin(name1);
+                setCount(!count);
+            }            
         }
         else if(place2 >= 100)
         {
             setPlace2(1);
-            playerWin(name2);
+            if(count)
+            {
+                playerWin(name2);
+                setCount(!count);
+            }            
         }
     })()
+
+    useEffect(() =>
+    {
+        if(snakeuser)
+        {
+            player2();
+        }
+        else
+        {
+            player1();
+        }
+    },[handlesnakeladder])
 
     
     useEffect(() =>
     {        
         if(snakeuser)
         {
-            setPlace1(place1+diceno);            
+            const interval = setInterval(() =>
+            {
+                if(srng.current === diceno+1)
+                {
+                    setHandleSnakeLadder(!handlesnakeladder)
+                    srng.current = 1;
+                    clearInterval(interval);
+                    return;
+                }
+                setPlace1(place1+srng.current);            
+                srng.current = srng.current+1;                
+
+            },150)   
         }
         else
-        {            
-            setPlace2(place2+diceno);                     
+        {
+            const interval = setInterval(() =>
+            {   
+                if(srng.current === diceno+1)
+                {
+                    setHandleSnakeLadder(!handlesnakeladder)
+                    srng.current = 1;
+                    clearInterval(interval);
+                    return;
+                }
+                setPlace2(place2+srng.current);            
+                srng.current = srng.current+1;                         
+            },150)  
         }
 
-        player1();
-        player2();
+        // player1();
+        // player2();
 
     },[flag]);
-
 
   return (
     <View style={{backgroundColor:"#ebfaf8",height:"100%", alignItems:'center'  }}>  

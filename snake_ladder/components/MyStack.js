@@ -32,6 +32,11 @@ export default function MyStack()
 
     navigation.navigate('Main');
   }
+
+  const navScreen = (navigation) =>
+  {
+    navigation.navigate('Main');
+  }
  
 
 
@@ -62,7 +67,7 @@ export default function MyStack()
                 <View style={{marginLeft:20}}>                  
                   <AntDesign name='retweet'  color={'black'} size={26}  {...props}
                   title="Restart"
-                  onPress={() => delData(navigation)} />
+                  onPress={() => navScreen(navigation)} />
                 </View>
               ),
           })}/>
@@ -106,7 +111,7 @@ export default function MyStack()
             <View style={{marginLeft:20}}>                  
                 <AntDesign name='retweet'  color={'black'} size={26}  {...props}
                 title="Restart"
-                onPress={() => delData(navigation)} />
+                onPress={() => navScreen(navigation)} />
             </View>
             ),
           })}/>    
@@ -117,7 +122,7 @@ export default function MyStack()
                 <View style={{marginLeft:20}}>                  
                     <AntDesign name='retweet'  color={'black'} size={26}  {...props}
                     title="Restart"
-                    onPress={() => delData(navigation)} />
+                    onPress={() => navScreen(navigation)} />
                 </View>
                 ),
             })}/>    
