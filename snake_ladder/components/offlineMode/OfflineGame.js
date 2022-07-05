@@ -173,7 +173,6 @@ const OfflineGame = ({navigation}) =>
             player1();
         }
     },[handlesnakeladder])
-
     
     useEffect(() =>
     {        
@@ -189,7 +188,7 @@ const OfflineGame = ({navigation}) =>
                     return;
                 }
                 setPlace1(place1+srng.current);            
-                srng.current = srng.current+1;                
+                srng.current = srng.current+1;                 
 
             },150)   
         }
@@ -206,7 +205,7 @@ const OfflineGame = ({navigation}) =>
                 }
                 setPlace2(place2+srng.current);            
                 srng.current = srng.current+1;                         
-            },150)  
+            },150)   
         }
 
         // player1();

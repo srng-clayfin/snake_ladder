@@ -1,6 +1,7 @@
 import React, {useState } from 'react';
 import { View, Text, StyleSheet, Dimensions } from "react-native";
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LottieView from 'lottie-react-native';
 
 const windowWidth = Dimensions.get('window').width;
 const blockwidth = windowWidth-20
@@ -15,32 +16,58 @@ export const Block = (p) =>
                    {         
                     p.value === p.place1 && p.value === p.place2 ?                                        
                     <View style={styles.child1}>                        
-                        <MaterialCommunityIcons name='emoticon-devil'  
+                        {/* <MaterialCommunityIcons name='emoticon-devil'  
                                 color={'blue'} 
                                 size={15}
                         />
                         <MaterialCommunityIcons name='emoticon-devil'  
                             color={'red'} 
                             size={15}
-                        />            
+                        />             */}
+                        <LottieView
+                            style={{ width:20, height:40,bottom:6,right:6}}
+                            source={require('./assets/blue.json')}
+                            autoPlay 
+                            duration={1000}
+                            loop                        
+                        />
+                        <LottieView
+                            style={{ width:20, height:40,bottom:2,right:6}}
+                            source={require('./assets/red.json')}
+                            autoPlay 
+                            duration={1000}
+                            loop                        
+                        />
                     </View>
                         :
                     p.value === p.place1 ?                
                     <View style={styles.child}>                        
-                        <MaterialCommunityIcons name='emoticon-devil'  
+                        {/* <MaterialCommunityIcons name='emoticon-devil'  
                             color={'red'} 
                             size={20}
-                        />            
+                        />             */}
+                        <LottieView
+                            style={{ width:45, height:45, bottom:6, right:3}}
+                            source={require('./assets/red.json')}
+                            autoPlay 
+                            duration={1000}
+                           loop                        
+                        />
                     </View>
                         :                    
                     p.value === p.place2 ?                
-                    <View style={styles.child}>           
-                        {/* <View style={styles.innerchild}> */}
-                            <MaterialCommunityIcons name='emoticon-devil'  
+                    <View style={styles.child}>                                   
+                            {/* <MaterialCommunityIcons name='emoticon-devil'  
                                     color={'blue'} 
                                     size={20}
-                            />
-                        {/* </View> */}
+                            /> */}
+                            <LottieView
+                                style={{ width:45, height:45, bottom:6, right:3}}
+                                source={require('./assets/blue.json')}
+                                autoPlay 
+                                duration={1000}
+                                loop                        
+                            />                        
                     </View>
                         :                      
                     <Text style={styles.child0}>
@@ -60,21 +87,18 @@ const styles = StyleSheet.create ({
         },
     child0:{
         textAlign: 'center',
-        marginTop: 6,
-        fontWeight: 'normal',        
+        marginTop: 6,        
+        fontWeight: 'normal',                
     },
     child1:{            
-        alignItems:'center',        
+        alignItems:'center',         
+        position: 'absolute',   
+        flexDirection:'row',     
     } ,
     child:
     {
-        alignItems:'center',
-        paddingTop:"25%",    
-
-        // borderWidth:2,
-        // borderColor:"darkgreen",
-               
-        // position: 'absolute',           
+        alignItems:'center',               
+        position: 'absolute',           
     },
     innerchild: 
     {
