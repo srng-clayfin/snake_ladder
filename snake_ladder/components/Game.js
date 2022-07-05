@@ -1,4 +1,3 @@
-
 import { ImageBackground, TouchableOpacity, StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
@@ -49,7 +48,6 @@ const Game = () =>
     // {
     //     getData()
     // },[p1,p2])
-    
         
         setInterval( () =>
         {
@@ -124,16 +122,14 @@ return (
                     <Text style={{fontSize:14,fontWeight:"bold"}}>Player2 : {p2}</Text>                
             </View>  
         </View>
-
-            :
-            <View  style={ styles.diceparentwait }>  
-                <Text style={{fontSize:25,fontWeight:"bold",marginBottom:20}}>Waiting for player...</Text>
-                <ActivityIndicator size="large" color="#00ff00" />
-            </View>
+        :
+        <View  style={ styles.diceparentwait }>  
+            <Text style={{fontSize:25,fontWeight:"bold",marginBottom:20}}>Waiting for player...</Text>
+            <ActivityIndicator size="large" color="#00ff00" />
+        </View>
         }        
 
         {flag ? 
-
         <>
             <View style={{marginTop:20}}>
                 <Board pl1={p1} pl2={p2}/>
@@ -157,15 +153,10 @@ return (
                                         :
                                         dicelist[diceno - 1]
                                 }                                
-                                style={{
-                                    height: "100%",
-                                    width: "100%",
-                                    borderRadius: 6,
-                                }}
+                                style={styles.bgimg}
                 />           
                 </TouchableOpacity>
             </View>
-
         </>
         : 
             null
@@ -178,6 +169,12 @@ return (
 export default Game
 
 const styles = StyleSheet.create({
+    bgimg : 
+    style={
+        height: "100%",
+        width: "100%",
+        borderRadius: 6,
+    },
     button: {
         alignItems: "center",
         backgroundColor: "grey",

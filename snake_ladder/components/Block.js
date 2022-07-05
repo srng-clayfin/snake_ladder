@@ -34,11 +34,13 @@ export const Block = (p) =>
                     </View>
                         :                    
                     p.value === p.place2 ?                
-                    <View style={styles.child}>                        
-                        <MaterialCommunityIcons name='emoticon-devil'  
-                                color={'blue'} 
-                                size={20}
-                        />
+                    <View style={styles.child}>           
+                        {/* <View style={styles.innerchild}> */}
+                            <MaterialCommunityIcons name='emoticon-devil'  
+                                    color={'blue'} 
+                                    size={20}
+                            />
+                        {/* </View> */}
                     </View>
                         :                      
                     <Text style={styles.child0}>
@@ -67,6 +69,16 @@ const styles = StyleSheet.create ({
     child:
     {
         alignItems:'center',
-        paddingTop:"25%",        
-    }   
+        paddingTop:"25%",    
+
+        // borderWidth:2,
+        // borderColor:"darkgreen",
+               
+        // position: 'absolute',           
+    },
+    innerchild: 
+    {
+
+    }
+
  })
