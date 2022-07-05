@@ -219,12 +219,12 @@ const OfflineGame = ({navigation}) =>
             <View style={styles.pdetails}>
                 <Text style={{fontSize:22,fontWeight:"bold"}}>Score Board</Text>
                 <View style={{flexDirection:'row'}}> 
-                    <MaterialCommunityIcons name='emoticon-devil' color={'red'} size={20} />
+                    {/* <MaterialCommunityIcons name='emoticon-devil' color={'red'} size={20} /> */}
                     <Text style={{fontSize:14,fontWeight:"bold",color:'red'}}>{`${name1}  : ${place1}`}</Text>                    
                 </View>                
                 <View style={{flexDirection:'row'}}> 
-                    <MaterialCommunityIcons name='emoticon-devil' color={'blue'} size={20} />
-                    <Text style={{fontSize:14,fontWeight:"bold",color:'blue'}}>{`${name2}  : ${place2}`}</Text>                                    
+                    {/* <MaterialCommunityIcons name='emoticon-devil' color={'blue'} size={20} /> */}
+                    <Text style={{fontSize:14,fontWeight:"bold",color:'#3e7ee6'}}>{`${name2}  : ${place2}`}</Text>                                    
                 </View>                
             </View>  
         </View>
