@@ -9,7 +9,6 @@ const dicelist = [require("../assets/1.png"), require("../assets/2.png"), requir
 
 const OfflineGame = ({navigation}) => 
 {
-
     const srng = useRef(1);
 
     const {name1,name2} = useContext(userContext);
@@ -189,7 +188,6 @@ const OfflineGame = ({navigation}) =>
                 }
                 setPlace1(place1+srng.current);            
                 srng.current = srng.current+1;                 
-
             },150)   
         }
         else
