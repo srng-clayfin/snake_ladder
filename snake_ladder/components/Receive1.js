@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, Alert } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Alert, TouchableOpacity } from 'react-native';
 import React, { useContext, useState } from 'react';
 import { userContext } from './MyStack';
 import axios from 'axios';
@@ -61,23 +61,18 @@ const Receive1 = ({navigation}) =>
         />
 
         {!flag ? 
-                <View style={styles.bottom}>                
-                    <Button
-                        title="Enter Joining Code... "
-                        type="clear"
-                        onPress={() => checkData()}
-                      />
-                </View>
+                <TouchableOpacity
+                    style={styles.topacity}
+                    onPress={() => checkData()} >
+                    <Text style={styles.text}>Enter Joining Code...</Text>
+                </TouchableOpacity>  
+
         :    
-                <View style={styles.bottom1}>                
-                    <Button                         
-                        title="Start Game"                        
-                        type="clear"                                 
-                        onPress={startGame}
-                        titleStyle={{color:"#00a827"}}
-                    />
-           
-                </View>
+                <TouchableOpacity
+                    style={styles.topacity1}
+                    onPress={startGame} >
+                    <Text style={styles.text1}>Start Game</Text>
+                </TouchableOpacity>  
         }
     </View>
   )
@@ -93,24 +88,40 @@ const styles = StyleSheet.create({
         borderBottomWidth:3,
         paddingLeft: 10,        
     },
-    bottom : 
+    topacity:
     {
-      borderWidth:2,
-      height : 90,
-      borderColor:"#0488c9",
-      borderBottomLeftRadius:60,
-      borderBottomRightRadius:60,
-      backgroundColor: "#c9edff",      
-      paddingTop:20
-   },
-   bottom1 : 
+        borderWidth:2,
+        height : 90,
+        borderColor:"#0488c9",
+        borderTopStartRadius:35,
+        borderTopEndRadius:35, 
+        backgroundColor: "#c9edff",      
+        alignItems:'center',
+        justifyContent:'center',            
+        borderRadius:150,
+    },
+    topacity1 : 
     {
-      borderWidth:2,
-      height : 90,
-      borderBottomLeftRadius:60,
-      borderBottomRightRadius:60,
-      borderColor: "#00a827",
-      backgroundColor: "#d0f7d9",      
-      paddingTop:20
-   },
+        borderWidth:2,
+        height : 90,      
+        borderTopStartRadius:35,
+        borderTopEndRadius:35, 
+        borderColor: "#00a827",
+        backgroundColor: "#d0f7d9",            
+        alignItems:'center',
+        justifyContent:'center',            
+        borderRadius:150,
+    },       
+    text1 :
+    {
+      fontSize:18,
+      fontWeight:"bold",
+      color: "#00a827",
+    },   
+    text :
+    {
+      fontSize:18,
+      fontWeight:"bold",
+      color: "#0488c9",
+    },    
 })

@@ -1,4 +1,4 @@
-import { Alert, StyleSheet, TextInput, View } from 'react-native'
+import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useContext} from 'react'
 import { Button } from 'react-native-elements'
 import { userContext } from '../MyStack'
@@ -40,7 +40,7 @@ const OfflineMain = ({navigation}) => {
             placeholder="Enter Player2 Name :"            
         />
 
-        <View style={styles.bottom1}>                
+        {/* <View style={styles.bottom1}>                
             <Button                         
                 title="Start Game"                        
                 type="clear"                                 
@@ -48,7 +48,13 @@ const OfflineMain = ({navigation}) => {
                 onPress={handlesubmit}
                 titleStyle={{color:"#00a827"}}
             />
-        </View>
+        </View> */}
+        
+        <TouchableOpacity
+            style={styles.topacity1}
+            onPress={handlesubmit} >
+            <Text style={styles.text1}>Start Game</Text>
+        </TouchableOpacity>  
     </View>
     
   )
@@ -80,5 +86,23 @@ const styles = StyleSheet.create({
     margin: 15,
     borderColor: 'black',
     borderWidth: 1
-  }
+  },
+  topacity1 : 
+    {
+        borderWidth:2,
+        height : 90,      
+        borderTopStartRadius:35,
+        borderTopEndRadius:35, 
+        borderColor: "#00a827",
+        backgroundColor: "#d0f7d9",            
+        alignItems:'center',
+        justifyContent:'center',            
+        borderRadius:150,
+    },       
+    text1 :
+    {
+      fontSize:18,
+      fontWeight:"bold",
+      color: "#00a827",
+    },   
 })

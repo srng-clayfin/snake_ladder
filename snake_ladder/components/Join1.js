@@ -6,7 +6,7 @@ import { userContext } from './MyStack'
 
 const Join1 = ({navigation}) => 
 {   
-    const {p1,setP1,p2,setP2,pid,setPid,user1,setUser1} = useContext(userContext) 
+    const {setPid} = useContext(userContext) 
 
     const [rno,setRno] = useState(0);
 
