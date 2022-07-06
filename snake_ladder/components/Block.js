@@ -1,6 +1,5 @@
-import React, {useState } from 'react';
+import React from 'react';  
 import { View, Text, StyleSheet, Dimensions } from "react-native";
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import LottieView from 'lottie-react-native';
 
 const windowWidth = Dimensions.get('window').width;
@@ -15,15 +14,7 @@ export const Block = (p) =>
                 <View style={styles.parent}>                   
                    {         
                     p.value === p.place1 && p.value === p.place2 ?                                        
-                    <View style={styles.child1}>                        
-                        {/* <MaterialCommunityIcons name='emoticon-devil'  
-                                color={'blue'} 
-                                size={15}
-                        />
-                        <MaterialCommunityIcons name='emoticon-devil'  
-                            color={'red'} 
-                            size={15}
-                        />             */}
+                    <View style={styles.child1}>                                                
                         <LottieView
                             style={{ width:20, height:40,bottom:6,right:6}}
                             source={require('./assets/blue.json')}
@@ -41,11 +32,7 @@ export const Block = (p) =>
                     </View>
                         :
                     p.value === p.place1 ?                
-                    <View style={styles.child}>                        
-                        {/* <MaterialCommunityIcons name='emoticon-devil'  
-                            color={'red'} 
-                            size={20}
-                        />             */}
+                    <View style={styles.child}>                                                
                         <LottieView
                             style={{ width:45, height:45, bottom:6, right:3}}
                             source={require('./assets/red.json')}
@@ -56,11 +43,7 @@ export const Block = (p) =>
                     </View>
                         :                    
                     p.value === p.place2 ?                
-                    <View style={styles.child}>                                   
-                            {/* <MaterialCommunityIcons name='emoticon-devil'  
-                                    color={'blue'} 
-                                    size={20}
-                            /> */}
+                    <View style={styles.child}>                                                               
                             <LottieView
                                 style={{ width:45, height:45, bottom:6, right:3}}
                                 source={require('./assets/blue.json')}
