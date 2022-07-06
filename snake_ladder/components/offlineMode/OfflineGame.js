@@ -6,6 +6,8 @@ import LottieView from 'lottie-react-native';
 import Sound from 'react-native-sound';
 
 const diceSong = require('../assets/dicerolling.mp3');
+const clickSong = require('../assets/click.wav');
+const winbeep = require('../assets/winbeep.mp3');
 
 const dicelist = [require("../assets/1.png"), require("../assets/2.png"), require("../assets/3.png"),
                   require("../assets/4.png"), require("../assets/5.png"), require("../assets/6.png")];
@@ -24,28 +26,21 @@ const OfflineGame = ({navigation}) =>
     const [diceflag,setDiceflag] = useState(true);
 
     Sound.setCategory('Playback');
-
-    var ding = new Sound(diceSong , Sound.MAIN_BUNDLE, (error) => {
-    if (error) {
-        console.log('failed to load the sound', error);
-        return;
-        }
-        // if loaded successfully
-        console.log('duration in seconds: ' + ding.getDuration() + 'number of channels: ' + ding.getNumberOfChannels());
     
-    });
-     
+    const dicesound = new Sound(diceSong , Sound.MAIN_BUNDLE);
+    const clicksound = new Sound(clickSong , Sound.MAIN_BUNDLE);
+    const winsound = new Sound(winbeep , Sound.MAIN_BUNDLE);    
+
     const handleDice = () => 
     {
         const num = Math.floor(Math.random() * (6 - 1 + 1) + 1);       
-
         if(num===diceno)
         {
             handleDice();            
         }
         else
         {
-            ding.play();
+            dicesound.play();
             setDiceno(num);              
             setFlag(!flag);      
             setDiceflag(false);                
@@ -143,6 +138,7 @@ const OfflineGame = ({navigation}) =>
 
     const playerWin = (p) =>
     {
+        // winsound.play();
         Alert.alert(
             'Winner',
             p+" Win 👑",
@@ -194,7 +190,9 @@ const OfflineGame = ({navigation}) =>
                     setDiceflag(true);
                     return;
                 }
-                setPlace1(place1+srng.current);                   
+                setPlace1(place1+srng.current);         
+                // clicksound.pause();
+                clicksound.play(); 
                 srng.current = srng.current+1;             
 
             },150)   
@@ -212,6 +210,8 @@ const OfflineGame = ({navigation}) =>
                     return;
                 }
                 setPlace2(place2+srng.current);            
+                // clicksound.pause();
+                clicksound.play();                          
                 srng.current = srng.current+1;             
 
             },150)   
@@ -263,7 +263,7 @@ const OfflineGame = ({navigation}) =>
                     duration={1200}
                     loop />                                        
             </View>
-    }
+        }
         </View>
         <View style={styles.playername}>
             <Text style={{fontSize:18,fontWeight:'bold'}}>
