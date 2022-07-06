@@ -1,4 +1,4 @@
-import { StyleSheet, View, Image } from 'react-native';
+import { StyleSheet, View, Image, TouchableOpacity,Text } from 'react-native';
 import React from 'react';
 import { Button } from 'react-native-elements';
 const snake1 = require("../assets/snake.png");
@@ -9,23 +9,25 @@ const Offline = ({navigation}) =>
   //completed 
 
   return (
-    <View style={{padding:30,backgroundColor:"#ebfaf8",height:"100%"}}>
-        <View style={styles.top}>
-            <Button
-                  title="Online Mode"            
-                  type="clear"
-                  titleStyle={{color:"#00a827"}}
-                  onPress={() => navigation.navigate('Start')}
-            />
-        </View>        
-        <View style={styles.bottom}>                
-            <Button
-              title="Offline Mode"
-              type="clear"
-              titleStyle={{color:"#00a827"}}
-              onPress={() => navigation.navigate('OfflineMain')}
-            />
-        </View>
+    <View style={styles.parent}>              
+        <TouchableOpacity
+            style={styles.topacity}
+            onPress={() => {
+              navigation.navigate('Start');              
+            }}
+          >
+                <Text style={styles.text}>Online Mode</Text>
+        </TouchableOpacity>  
+
+        <TouchableOpacity
+            style={styles.topacity1}
+            onPress={() => {
+              navigation.navigate('OfflineMain');              
+            }}
+          >
+                <Text style={styles.text}>Offline Mode</Text>
+        </TouchableOpacity>  
+
         <View  style={styles.imgview}>
             <Image
               style={styles.tinyLogo}    
@@ -39,25 +41,45 @@ const Offline = ({navigation}) =>
 export default Offline
 
 const styles = StyleSheet.create({
-  
-  top:
+  parent:
+  {
+    padding:30,
+    paddingTop:100,
+    backgroundColor:"#ebfaf8",
+    height:"100%"
+  },
+  topacity : 
   {
     marginTop:100,
     borderWidth:2,    
-    borderTopStartRadius:35,
-    borderTopEndRadius:35, 
+    borderBottomLeftRadius:35,
+    borderBottomRightRadius:35,    
     borderColor: "#00a827",
     backgroundColor: "#d0f7d9",      
-  } ,  
-  bottom : 
+    alignItems:'center',
+    justifyContent:'center',    
+    height:45,    
+    borderRadius:150,
+  },
+  topacity1 : 
   {
     borderWidth:2,
     marginTop:"35%",
-    borderBottomLeftRadius:35,
-    borderBottomRightRadius:35,
+    borderTopStartRadius:35,
+    borderTopEndRadius:35, 
     borderColor: "#00a827",
-    backgroundColor: "#d0f7d9",      
- },
+    backgroundColor: "#d0f7d9",    
+    alignItems:'center',
+    justifyContent:'center',    
+    height:45,    
+    borderRadius:150,
+  },
+  text :
+  {
+    fontSize:18,
+    fontWeight:"bold",
+    color: "#00a827",
+  },
  tinyLogo: 
  {
   width: "100%",
@@ -69,7 +91,7 @@ const styles = StyleSheet.create({
     height:100,
     width: 80,
     position: 'absolute', 
-    top:200,
+    top:273,
     left:150,
   }
 })

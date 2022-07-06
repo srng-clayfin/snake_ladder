@@ -1,16 +1,14 @@
-import { StyleSheet, Text, View, TextInput } from 'react-native'
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native'
 import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { userContext } from './MyStack'
-import { Button } from 'react-native-elements';
 
 
 const Join1 = ({navigation}) => 
 {   
-    const {p1,setP1,p2,setP2,pid,setPid,
-        user1,setUser1} = useContext(userContext) 
+    const {p1,setP1,p2,setP2,pid,setPid,user1,setUser1} = useContext(userContext) 
 
-    const [rno,setRno] = useState(0)  ;
+    const [rno,setRno] = useState(0);
 
     const createData = async (no) => {        
         try {
@@ -30,7 +28,6 @@ const Join1 = ({navigation}) =>
         }
     }
 
-
     useEffect(() => 
     {
         const no = Math.floor((Math.random()*10000000)+1);
@@ -38,8 +35,6 @@ const Join1 = ({navigation}) =>
         setRno(no);        
         createData(no);
     },[])
-  
-
 
   return (
     <View style={{backgroundColor:"#ebfaf8",height:"100%",padding:20}}>  
@@ -54,17 +49,14 @@ const Join1 = ({navigation}) =>
             <Text style={{fontWeight:"bold",fontSize:24}}>{rno}</Text>
         </View>       
 
-        <View style={styles.bottom}>                
-            <Button
-                title="Start Game"
-                type="clear"
-                onPress={() => 
-                    {
-                        setUser1(true)
-                        navigation.navigate('Game')
-                    }} 
-                />
-        </View>      
+        <TouchableOpacity
+            style={styles.topacity1}
+            onPress={() => {
+              navigation.navigate('Game');              
+            }}
+          >
+                <Text style={styles.text}>Start Game</Text>
+        </TouchableOpacity>  
     </View>
 
   )
@@ -81,24 +73,22 @@ const styles = StyleSheet.create({
         marginTop:40,
         borderBottomWidth:2        
     },
-    bottom : 
+   topacity1 : 
     {
-      borderWidth:2,
-      height : 90,
-      borderColor:"#0488c9",
-      borderBottomLeftRadius:60,
-      borderBottomRightRadius:60,
-      backgroundColor: "#c9edff",      
-      paddingTop:20
-   },
-   bottom1 : 
+        borderWidth:2,
+        height : 90,
+        borderColor:"#0488c9",
+        borderTopStartRadius:35,
+        borderTopEndRadius:35, 
+        backgroundColor: "#c9edff",              
+        alignItems:'center',
+        justifyContent:'center',            
+        borderRadius:150,
+    },
+    text :
     {
-      borderWidth:2,
-      height : 90,
-      borderColor: "#00a827",
-      borderBottomLeftRadius:60,
-      borderBottomRightRadius:60,
-      backgroundColor: "#d0f7d9",      
-      paddingTop:20
-   },
+      fontSize:18,
+      fontWeight:"bold",
+      color: "#0488c9",
+    },
 })

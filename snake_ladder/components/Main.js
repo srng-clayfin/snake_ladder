@@ -4,8 +4,6 @@ import LottieView from 'lottie-react-native';
 
 const Main = ({navigation}) => 
 {
-
-
   const [flag,setFlag] = useState(false);
   const [count,setCount] = useState(0);
   
