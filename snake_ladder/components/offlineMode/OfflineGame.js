@@ -3,6 +3,9 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Board } from '../Board';
 import { userContext } from '../MyStack';
 import LottieView from 'lottie-react-native';
+import Sound from 'react-native-sound';
+
+const diceSong = require('../assets/dicerolling.mp3');
 
 const dicelist = [require("../assets/1.png"), require("../assets/2.png"), require("../assets/3.png"),
                   require("../assets/4.png"), require("../assets/5.png"), require("../assets/6.png")];
@@ -19,6 +22,18 @@ const OfflineGame = ({navigation}) =>
     const [snakeuser,setSnakeuser]  = useState(false);   
     const [handlesnakeladder,setHandleSnakeLadder] = useState(false);    
     const [diceflag,setDiceflag] = useState(true);
+
+    Sound.setCategory('Playback');
+
+    var ding = new Sound(diceSong , Sound.MAIN_BUNDLE, (error) => {
+    if (error) {
+        console.log('failed to load the sound', error);
+        return;
+        }
+        // if loaded successfully
+        console.log('duration in seconds: ' + ding.getDuration() + 'number of channels: ' + ding.getNumberOfChannels());
+    
+    });
      
     const handleDice = () => 
     {
@@ -30,6 +45,7 @@ const OfflineGame = ({navigation}) =>
         }
         else
         {
+            ding.play();
             setDiceno(num);              
             setFlag(!flag);      
             setDiceflag(false);                
