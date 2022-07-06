@@ -18,7 +18,6 @@ const OfflineGame = ({navigation}) =>
     const [place2,setPlace2] = useState(1);
     const [snakeuser,setSnakeuser]  = useState(false);   
     const [handlesnakeladder,setHandleSnakeLadder] = useState(false);    
-    const [count,setCount]  = useState(true);
     const [diceflag,setDiceflag] = useState(true);
      
     const handleDice = () => 
