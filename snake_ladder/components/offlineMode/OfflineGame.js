@@ -2,7 +2,7 @@ import { Alert, ImageBackground, StyleSheet, Text, TouchableOpacity, View } from
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Board } from '../Board';
 import { userContext } from '../MyStack';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import LottieView from 'lottie-react-native';
 
 const dicelist = [require("../assets/1.png"), require("../assets/2.png"), require("../assets/3.png"),
                   require("../assets/4.png"), require("../assets/5.png"), require("../assets/6.png")];
@@ -19,6 +19,7 @@ const OfflineGame = ({navigation}) =>
     const [snakeuser,setSnakeuser]  = useState(false);   
     const [handlesnakeladder,setHandleSnakeLadder] = useState(false);    
     const [count,setCount]  = useState(true);
+    const [diceflag,setDiceflag] = useState(true);
      
     const handleDice = () => 
     {
@@ -31,7 +32,8 @@ const OfflineGame = ({navigation}) =>
         else
         {
             setDiceno(num);              
-            setFlag(!flag);                      
+            setFlag(!flag);      
+            setDiceflag(false);                
             setSnakeuser(!snakeuser);            
         }       
     } 
@@ -138,26 +140,16 @@ const OfflineGame = ({navigation}) =>
             {cancelable: false},
         );
         // console.log(p+" Win 👑");
-    }
+    }    
 
     (() => {
-        if(place1 >= 100)
+        if(place1 === 100)
         {
-            setPlace1(1)
-            if(count)
-            {
-                playerWin(name1);
-                setCount(!count);
-            }            
+            playerWin(name1); 
         }
-        else if(place2 >= 100)
+        else if(place2 === 100)
         {
-            setPlace2(1);
-            if(count)
-            {
-                playerWin(name2);
-                setCount(!count);
-            }            
+            playerWin(name2);
         }
     })()
 
@@ -184,10 +176,12 @@ const OfflineGame = ({navigation}) =>
                     setHandleSnakeLadder(!handlesnakeladder)
                     srng.current = 1;
                     clearInterval(interval);
+                    setDiceflag(true);
                     return;
                 }
-                setPlace1(place1+srng.current);            
-                srng.current = srng.current+1;                 
+                setPlace1(place1+srng.current);                   
+                srng.current = srng.current+1;             
+
             },150)   
         }
         else
@@ -199,16 +193,14 @@ const OfflineGame = ({navigation}) =>
                     setHandleSnakeLadder(!handlesnakeladder)
                     srng.current = 1;
                     clearInterval(interval);
+                    setDiceflag(true);
                     return;
                 }
                 setPlace2(place2+srng.current);            
-                srng.current = srng.current+1;                         
+                srng.current = srng.current+1;             
+
             },150)   
         }
-
-        // player1();
-        // player2();
-
     },[flag]);
 
   return (
@@ -216,12 +208,11 @@ const OfflineGame = ({navigation}) =>
         <View style={styles.ppdetails}>
             <View style={styles.pdetails}>
                 <Text style={{fontSize:22,fontWeight:"bold"}}>Score Board</Text>
-                <View style={{flexDirection:'row'}}> 
-                    {/* <MaterialCommunityIcons name='emoticon-devil' color={'red'} size={20} /> */}
+                <View style={{flexDirection:'row'}}>           
                     <Text style={{fontSize:14,fontWeight:"bold",color:'red'}}>{`${name1}  : ${place1}`}</Text>                    
                 </View>                
                 <View style={{flexDirection:'row'}}> 
-                    {/* <MaterialCommunityIcons name='emoticon-devil' color={'blue'} size={20} /> */}
+                    
                     <Text style={{fontSize:14,fontWeight:"bold",color:'#3e7ee6'}}>{`${name2}  : ${place2}`}</Text>                                    
                 </View>                
             </View>  
@@ -238,11 +229,26 @@ const OfflineGame = ({navigation}) =>
             </View>
         {/* <></> */}
         <View style={ styles.diceparent2 }>  
+        {diceflag ?
             <TouchableOpacity style={styles.button} onPress={handleDice} >
                         <ImageBackground
                             source={ diceno === 0 ? dicelist[1] : dicelist[diceno - 1] }                                
                             style={styles.img} />           
             </TouchableOpacity>
+        :
+            <View style={styles.button} >
+                <ImageBackground
+                    source={ diceno === 0 ? dicelist[1] : dicelist[diceno - 1] }                                
+                    style={styles.img} />           
+                                
+                <LottieView
+                    style={styles.bgsping}
+                    source={require('../assets/spin.json')}
+                    autoPlay 
+                    duration={1200}
+                    loop />                                        
+            </View>
+    }
         </View>
         <View style={styles.playername}>
             <Text style={{fontSize:18,fontWeight:'bold'}}>
@@ -326,5 +332,15 @@ const styles = StyleSheet.create({
         alignItems: "center",                        
         position: 'absolute',        
         top: 670,
+    },
+    bgsping : 
+    {
+        alignItems: "center",
+        width:80,
+        height:80,                
+        position: 'absolute',
+        top:5,
     }
+
+    
 })

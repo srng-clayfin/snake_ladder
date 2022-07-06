@@ -1,6 +1,5 @@
 import { Alert, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useContext} from 'react'
-import { Button } from 'react-native-elements'
 import { userContext } from '../MyStack'
 
 
@@ -10,8 +9,6 @@ const OfflineMain = ({navigation}) => {
 
     
     const {name1,name2,setName1,setName2} = useContext(userContext);   
-
-    //console.log(name1,name2)
 
     const handlesubmit = () =>
     {
@@ -39,16 +36,6 @@ const OfflineMain = ({navigation}) => {
             onChangeText={(e) => setName2(e) }        
             placeholder="Enter Player2 Name :"            
         />
-
-        {/* <View style={styles.bottom1}>                
-            <Button                         
-                title="Start Game"                        
-                type="clear"                                 
-                // onPress={() => navigation.navigate("OfflineGame")}
-                onPress={handlesubmit}
-                titleStyle={{color:"#00a827"}}
-            />
-        </View> */}
         
         <TouchableOpacity
             style={styles.topacity1}
