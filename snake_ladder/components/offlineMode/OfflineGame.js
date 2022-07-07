@@ -7,7 +7,7 @@ import Sound from 'react-native-sound';
 
 const diceSong = require('../assets/dicerolling.mp3');
 const clickSong = require('../assets/click.wav');
-const winbeep = require('../assets/winbeep.mp3');
+// const winbeep = require('../assets/winbeep.mp3');
 
 const dicelist = [require("../assets/1.png"), require("../assets/2.png"), require("../assets/3.png"),
                   require("../assets/4.png"), require("../assets/5.png"), require("../assets/6.png")];
@@ -29,7 +29,7 @@ const OfflineGame = ({navigation}) =>
     
     const dicesound = new Sound(diceSong , Sound.MAIN_BUNDLE);
     const clicksound = new Sound(clickSong , Sound.MAIN_BUNDLE);
-    const winsound = new Sound(winbeep , Sound.MAIN_BUNDLE);    
+    // const winsound = new Sound(winbeep , Sound.MAIN_BUNDLE);    
 
     const handleDice = () => 
     {
@@ -177,15 +177,16 @@ const OfflineGame = ({navigation}) =>
     },[handlesnakeladder])
     
     useEffect(() =>
-    {        
+    {   
         if(snakeuser)
-        {
+        {   
             const interval = setInterval(() =>
             {
                 if(srng.current === diceno+1)
                 {
                     setHandleSnakeLadder(!handlesnakeladder)
                     srng.current = 1;
+                    clicksound.stop();
                     clearInterval(interval);
                     setDiceflag(true);
                     return;
@@ -194,7 +195,6 @@ const OfflineGame = ({navigation}) =>
                 // clicksound.pause();
                 clicksound.play(); 
                 srng.current = srng.current+1;             
-
             },150)   
         }
         else
@@ -205,6 +205,7 @@ const OfflineGame = ({navigation}) =>
                 {
                     setHandleSnakeLadder(!handlesnakeladder)
                     srng.current = 1;
+                    clicksound.stop();
                     clearInterval(interval);
                     setDiceflag(true);
                     return;
@@ -213,7 +214,6 @@ const OfflineGame = ({navigation}) =>
                 // clicksound.pause();
                 clicksound.play();                          
                 srng.current = srng.current+1;             
-
             },150)   
         }
     },[flag]);
