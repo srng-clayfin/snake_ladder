@@ -6,7 +6,7 @@ import LottieView from 'lottie-react-native';
 import Sound from 'react-native-sound';
 
 const diceSong = require('../assets/dicerolling.mp3');
-const clickSong = require('../assets/click.wav');
+const clickSong = require('../assets/click01.wav');
 // const winbeep = require('../assets/winbeep.mp3');
 
 const dicelist = [require("../assets/1.png"), require("../assets/2.png"), require("../assets/3.png"),
@@ -40,7 +40,7 @@ const OfflineGame = ({navigation}) =>
         }
         else
         {
-            dicesound.play();
+            dicesound.play();    
             setDiceno(num);              
             setFlag(!flag);      
             setDiceflag(false);                
@@ -192,7 +192,6 @@ const OfflineGame = ({navigation}) =>
                     return;
                 }
                 setPlace1(place1+srng.current);         
-                // clicksound.pause();
                 clicksound.play(); 
                 srng.current = srng.current+1;             
             },150)   
@@ -210,9 +209,8 @@ const OfflineGame = ({navigation}) =>
                     setDiceflag(true);
                     return;
                 }
-                setPlace2(place2+srng.current);            
-                // clicksound.pause();
-                clicksound.play();                          
+                setPlace2(place2+srng.current);         
+                clicksound.play();                                          
                 srng.current = srng.current+1;             
             },150)   
         }
@@ -226,8 +224,7 @@ const OfflineGame = ({navigation}) =>
                 <View style={{flexDirection:'row'}}>           
                     <Text style={{fontSize:14,fontWeight:"bold",color:'red'}}>{`${name1}  : ${place1}`}</Text>                    
                 </View>                
-                <View style={{flexDirection:'row'}}> 
-                    
+                <View style={{flexDirection:'row'}}>                     
                     <Text style={{fontSize:14,fontWeight:"bold",color:'#3e7ee6'}}>{`${name2}  : ${place2}`}</Text>                                    
                 </View>                
             </View>  
@@ -292,6 +289,7 @@ const styles = StyleSheet.create({
         height: 100,
         borderColor:'red',
         padding: 7,
+        backgroundColor:"#ebfaf8"        
     },
     ppdetails:
     {        
@@ -300,6 +298,7 @@ const styles = StyleSheet.create({
         padding:2,
         width: "auto",        
         marginBottom:5,
+        backgroundColor:"#7cadfc"
     },
     button: 
     {
