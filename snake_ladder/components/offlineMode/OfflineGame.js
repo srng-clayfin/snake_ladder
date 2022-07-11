@@ -10,7 +10,7 @@ const clickSong = require('../assets/click01.wav');
 // const winbeep = require('../assets/winbeep.mp3');
 
 const dicelist = [require("../assets/1.png"), require("../assets/2.png"), require("../assets/3.png"),
-                  require("../assets/4.png"), require("../assets/5.png"), require("../assets/6.png")];
+                 require("../assets/4.png"), require("../assets/5.png"), require("../assets/6.png")];
 
 const OfflineGame = ({navigation}) => 
 {
@@ -232,7 +232,7 @@ const OfflineGame = ({navigation}) =>
         {/* <></> */}
         <View style={{marginTop:20}}>                
                 <Board pl1={place1} pl2={place2}/>
-            </View>
+        </View>
 
             <View style={styles.line}>
             </View>
