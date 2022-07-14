@@ -11,19 +11,24 @@ const Join1 = ({navigation}) =>
     const [rno,setRno] = useState(0);
 
     const createData = async (no) => {        
-        try {
-        const response = await axios.post(`https://fakeserversarang.herokuapp.com/player`, 
+        try 
         {
-            "player1":1,  
-            "id" : no
-        });
-        if (response.status === 201) {
-            console.log(` You have created: ${JSON.stringify(response.data)}`);
-        
-        } else {
-            throw new Error("An error has occurred");
+            const response = await axios.post(`https://fakeserversarang.herokuapp.com/player`, 
+            {
+                "player1":1,  
+                "id" : no
+            });
+            if (response.status === 201) 
+            {
+                console.log(` You have created: ${JSON.stringify(response.data)}`);
+            } 
+            else
+            {
+                throw new Error("An error has occurred");
+            }
         }
-        } catch (error) {
+        catch (error) 
+        {
             console.log("Error : ",error)
         }
     }
